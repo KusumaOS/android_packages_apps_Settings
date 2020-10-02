@@ -306,4 +306,9 @@
 
     <!-- About phone -->
     <string name="build_description">Description</string>
+
+    <!-- Bluetooth auto timeout -->
+    <string name="bluetooth_timeout">Turn off Bluetooth automatically</string>
+    <string name="bluetooth_timeout_summary">Never</string>
+    <string name="bluetooth_timeout_summary_auto"><xliff:g id="timeout_description">%1$s</xliff:g></string>
 </resources>

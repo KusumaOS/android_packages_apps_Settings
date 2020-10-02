@@ -24,6 +24,15 @@
         android:summary="@string/summary_placeholder"
         settings:controller="com.android.settings.bluetooth.BluetoothDeviceRenamePreferenceController"/>
 
+    <ListPreference
+        android:key="bluetooth_timeout"
+        android:icon="@drawable/ic_bluetooth_disabled"
+        android:title="@string/bluetooth_timeout"
+        android:summary="@string/bluetooth_timeout_summary"
+        android:entries="@array/custom_timeout_entries"
+        android:entryValues="@array/custom_timeout_values"
+        settings:controller="com.android.settings.bluetooth.BluetoothTimeoutPreferenceController"/>
+
     <com.android.settingslib.RestrictedPreference
         android:key="bluetooth_screen_add_bt_devices"
         android:title="@string/bluetooth_pairing_pref_title"
