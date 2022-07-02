@@ -316,4 +316,8 @@
     <string name="wifi_timeout">Turn off Wi-Fi automatically</string>
     <string name="wifi_timeout_summary">Never</string>
     <string name="wifi_timeout_summary_auto"><xliff:g id="timeout_description">%1$s</xliff:g></string>
+
+    <!-- Storage Scopes -->
+    <string name="storage_scopes">Storage Scopes</string>
+    <string name="storage_scopes_summary">Allow app to access limited files</string>
 </resources>

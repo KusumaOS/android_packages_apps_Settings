@@ -65,6 +65,12 @@
         android:summary="@string/summary_placeholder"
         settings:controller="com.android.settings.applications.appinfo.AppStoragePreferenceController" />
 
+    <Preference
+        android:key="storage_scopes"
+        android:title="@string/storage_scopes"
+        android:summary="@string/storage_scopes_summary"
+        settings:controller="com.android.settings.applications.appinfo.AppStorageScopesPreferenceController" />
+
     <com.android.settings.applications.AppDomainsPreference
         android:key="instant_app_launch_supported_domain_urls"
         android:title="@string/app_launch_supported_domain_urls_title"
