@@ -280,4 +280,8 @@
     <!-- Hide apps -->
     <string name="hide">Archive</string>
     <string name="unhide">Restore</string>
+
+    <!-- Parallel space -->
+    <string name="laboratory_parallel_space_title">Parallel Space</string>
+    <string name="laboratory_parallel_space_summary">Allow running multiple instances of the same application in parallel</string>
 </resources>
