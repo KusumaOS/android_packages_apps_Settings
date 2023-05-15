@@ -71,6 +71,12 @@
         android:summary="@string/storage_scopes_summary"
         settings:controller="com.android.settings.applications.appinfo.AppStorageScopesPreferenceController" />
 
+    <Preference
+        android:key="contact_scopes"
+        android:title="@string/contact_scopes"
+        android:summary="@string/contact_scopes_summary"
+        settings:controller="com.android.settings.applications.appinfo.AppContactScopesPreferenceController" />
+
     <com.android.settings.applications.AppDomainsPreference
         android:key="instant_app_launch_supported_domain_urls"
         android:title="@string/app_launch_supported_domain_urls_title"
