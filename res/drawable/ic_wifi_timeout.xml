@@ -1,0 +1,25 @@
+<!--
+  ~ Copyright (C) 2020 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24"
+        android:viewportHeight="24"
+        android:tint="?android:attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M 21.898438 11.101562 C 20.617188 9.816406 19.128906 8.8125 17.4375 8.085938 C 15.746094 7.363281 13.933594 7 12 7 C 11.648438 7 11.3125 7.011719 10.988281 7.039062 C 10.664062 7.0625 10.332031 7.101562 10 7.148438 L 7.449219 4.601562 C 8.183594 4.398438 8.929688 4.25 9.6875 4.148438 C 10.445312 4.050781 11.214844 4 12 4 C 14.367188 4 16.574219 4.441406 18.625 5.324219 C 20.675781 6.207031 22.464844 7.417969 24 8.949219 Z M 17.898438 15.050781 L 17.175781 14.324219 L 16.449219 13.601562 L 12.851562 10 C 14.199219 10.132812 15.460938 10.476562 16.636719 11.023438 C 17.8125 11.574219 18.851562 12.300781 19.75 13.199219 Z M 19.75 22.601562 L 10.351562 13.148438 C 9.566406 13.332031 8.835938 13.609375 8.164062 13.976562 C 7.488281 14.339844 6.882812 14.800781 6.351562 15.351562 L 4.25 13.199219 C 4.785156 12.667969 5.359375 12.199219 5.976562 11.800781 C 6.589844 11.398438 7.25 11.050781 7.949219 10.75 L 5.699219 8.5 C 5.015625 8.851562 4.378906 9.238281 3.789062 9.664062 C 3.195312 10.085938 2.632812 10.566406 2.101562 11.101562 L 0 8.949219 C 0.535156 8.417969 1.085938 7.9375 1.664062 7.511719 C 2.238281 7.085938 2.851562 6.683594 3.5 6.300781 L 1.398438 4.199219 L 2.800781 2.800781 L 21.199219 21.199219 Z M 12 21 L 8.476562 17.449219 C 8.925781 17 9.449219 16.644531 10.050781 16.386719 C 10.648438 16.128906 11.300781 16 12 16 C 12.699219 16 13.351562 16.128906 13.949219 16.386719 C 14.550781 16.644531 15.074219 17 15.523438 17.449219 Z M 12 21 " />
+</vector>

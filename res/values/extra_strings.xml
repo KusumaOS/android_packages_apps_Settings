@@ -311,4 +311,9 @@
     <string name="bluetooth_timeout">Turn off Bluetooth automatically</string>
     <string name="bluetooth_timeout_summary">Never</string>
     <string name="bluetooth_timeout_summary_auto"><xliff:g id="timeout_description">%1$s</xliff:g></string>
+
+    <!-- Wi-Fi auto timeout -->
+    <string name="wifi_timeout">Turn off Wi-Fi automatically</string>
+    <string name="wifi_timeout_summary">Never</string>
+    <string name="wifi_timeout_summary_auto"><xliff:g id="timeout_description">%1$s</xliff:g></string>
 </resources>
