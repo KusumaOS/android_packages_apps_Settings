@@ -14,6 +14,12 @@
         android:title="@string/power_menu_emergency_title"
         android:defaultValue="false" />
 
+    <SwitchPreference
+        android:key="lockdown"
+        android:icon="@drawable/ic_lock_lockdown"
+        android:title="@string/power_menu_lockdown_title"
+        android:defaultValue="false" />
+
     <lineageos.preference.LineageSecureSettingSwitchPreference
         android:key="advanced_reboot"
         android:icon="@drawable/ic_lock_restart"

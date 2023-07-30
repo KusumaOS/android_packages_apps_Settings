@@ -47,6 +47,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     private SwitchPreference mAirplanePref;
     private SwitchPreference mUsersPref;
     private SwitchPreference mBugReportPref;
+    private SwitchPreference mLockDownPref;
     private SwitchPreference mEmergencyPref;
     private SwitchPreference mDeviceControlsPref;
 
@@ -80,6 +81,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mUsersPref = findPreference(GLOBAL_ACTION_KEY_USERS);
             } else if (action.equals(GLOBAL_ACTION_KEY_BUGREPORT)) {
                 mBugReportPref = findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
+            } else if (action.equals(GLOBAL_ACTION_KEY_LOCKDOWN)) {
+                mLockDownPref = findPreference(GLOBAL_ACTION_KEY_LOCKDOWN);
             } else if (action.equals(GLOBAL_ACTION_KEY_EMERGENCY)) {
                 mEmergencyPref = findPreference(GLOBAL_ACTION_KEY_EMERGENCY);
             } else if (action.equals(GLOBAL_ACTION_KEY_DEVICECONTROLS)) {
@@ -123,6 +126,11 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
         if (mBugReportPref != null) {
             mBugReportPref.setChecked(mLineageGlobalActions.userConfigContains(
                     GLOBAL_ACTION_KEY_BUGREPORT));
+        }
+
+        if (mLockDownPref != null) {
+            mLockDownPref.setChecked(mLineageGlobalActions.userConfigContains(
+                    GLOBAL_ACTION_KEY_LOCKDOWN));
         }
 
         if (mEmergencyPref != null) {
@@ -179,6 +187,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_BUGREPORT);
             Settings.Global.putInt(getContentResolver(),
                     Settings.Global.BUGREPORT_IN_POWER_MENU, value ? 1 : 0);
+
+        } else if (preference == mLockDownPref) {
+            value = mLockDownPref.isChecked();
+            mLineageGlobalActions.updateUserConfig(value, GLOBAL_ACTION_KEY_LOCKDOWN);
 
         } else if (preference == mEmergencyPref) {
             value = mEmergencyPref.isChecked();
