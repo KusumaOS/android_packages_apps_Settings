@@ -288,4 +288,11 @@
     <!-- Keyboard hint -->
     <string name="navigation_bar_ime_space_title">Show navigation button</string>
     <string name="navigation_bar_ime_space_summary">For keyboard</string>
+
+    <!-- Navbar layout -->
+    <string name="navbar_layout_title">Icons spacing</string>
+    <string name="navbar_layout_normal">Default</string>
+    <string name="navbar_layout_compact">Compact</string>
+    <string name="navbar_layout_leftleaning">Left-leaning</string>
+    <string name="navbar_layout_rightleaning">Right-leaning</string>
 </resources>

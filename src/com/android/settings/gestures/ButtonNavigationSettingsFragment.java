@@ -64,12 +64,14 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment
             "navigation_app_switch_long_press";
 
     private static final String KEY_NAV_BAR_INVERSE = "sysui_nav_bar_inverse";
+    private static final String KEY_NAV_BAR_LAYOUT = "navbar_layout_views";
     private static final String KEY_ENABLE_TASKBAR = "enable_taskbar";
 
     private ListPreference mNavigationBackLongPressAction;
     private ListPreference mNavigationHomeLongPressAction;
     private ListPreference mNavigationHomeDoubleTapAction;
     private ListPreference mNavigationAppSwitchLongPressAction;
+    private ListPreference mNavBarLayout;
 
     private SwitchPreference mNavBarInverse;
     private SwitchPreference mEnableTaskbar;
@@ -119,6 +121,7 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment
                 appSwitchLongPressAction);
 
         mNavBarInverse = findPreference(KEY_NAV_BAR_INVERSE);
+        mNavBarLayout = findPreference(KEY_NAV_BAR_LAYOUT);
 
         mEnableTaskbar = findPreference(KEY_ENABLE_TASKBAR);
         if (mEnableTaskbar != null) {
@@ -222,6 +225,7 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment
 
     private void toggleTaskBarDependencies(boolean enabled) {
         enablePreference(mNavBarInverse, !enabled);
+        enablePreference(mNavBarLayout, !enabled);
         enablePreference(mNavigationBackLongPressAction, !enabled);
         enablePreference(mNavigationHomeLongPressAction, !enabled);
         enablePreference(mNavigationHomeDoubleTapAction, !enabled);
