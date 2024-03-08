@@ -35,6 +35,12 @@
         android:defaultValue="true"
         settings:requiresPackage="org.lineageos.overlay.customization.navbar.nohint" />
 
+    <lineageos.preference.extra.SystemSettingSwitchPreference
+        android:key="navigation_bar_hint_keyboard"
+        android:title="@string/navigation_bar_ime_space_title"
+        android:summary="@string/navigation_bar_ime_space_summary"
+        android:defaultValue="true" />
+
     <ListPreference
         android:key="navigation_bar_edge_long_swipe"
         android:dialogTitle="@string/navigation_bar_edge_long_swipe_title"

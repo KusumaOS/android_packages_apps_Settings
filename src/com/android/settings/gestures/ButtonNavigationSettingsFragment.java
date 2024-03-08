@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -127,6 +128,10 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment
                 mEnableTaskbar.setEnabled(false);
                 mEnableTaskbar.setSummary(
                         R.string.navigation_bar_enable_taskbar_disabled_button);
+            } else if ((Settings.System.getInt(resolver, 
+                    Settings.System.NAVIGATION_BAR_HINT_KEYBOARD, 1) == 0) &&
+                    DeviceUtils.isEdgeToEdgeEnabled(requireContext())) {
+                mEnableTaskbar.setEnabled(false);
             } else {
                 mEnableTaskbar.setOnPreferenceChangeListener(this);
                 mEnableTaskbar.setChecked(LineageSettings.System.getInt(resolver,

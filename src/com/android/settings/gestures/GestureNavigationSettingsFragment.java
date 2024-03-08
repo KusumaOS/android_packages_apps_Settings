@@ -63,6 +63,7 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
     private static final String RIGHT_EDGE_SEEKBAR_KEY = "gesture_right_back_sensitivity";
 
     private static final String NAVIGATION_BAR_HINT_KEY = "navigation_bar_hint";
+    private static final String NAVIGATION_BAR_HINT_KEYBOARD_KEY = "navigation_bar_hint_keyboard";
 
     private static final String KEY_EDGE_LONG_SWIPE = "navigation_bar_edge_long_swipe";
     private static final String KEY_ENABLE_TASKBAR = "enable_taskbar";
@@ -76,6 +77,7 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
     private ListPreference mEdgeLongSwipeAction;
     private SwitchPreference mEnableTaskbar;
     private SwitchPreference mNavbarHint;
+    private SwitchPreference mNavbarHintKeyboard;
 
     public GestureNavigationSettingsFragment() {
         super();
@@ -96,6 +98,11 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
         mEdgeLongSwipeAction = initList(KEY_EDGE_LONG_SWIPE, edgeLongSwipeAction);
 
         mNavbarHint = findPreference(NAVIGATION_BAR_HINT_KEY);
+        mNavbarHintKeyboard = findPreference(NAVIGATION_BAR_HINT_KEYBOARD_KEY);
+        if (LineageSettings.System.getInt(resolver, 
+                LineageSettings.System.NAVIGATION_BAR_HINT, 1) != 0) {
+            mNavbarHintKeyboard.setVisible(false);
+        }
 
         mEnableTaskbar = findPreference(KEY_ENABLE_TASKBAR);
         if (mEnableTaskbar != null) {
@@ -105,6 +112,10 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
                 mEnableTaskbar.setEnabled(false);
                 mEnableTaskbar.setSummary(
                         R.string.navigation_bar_enable_taskbar_disabled_gesture);
+            } else if ((Settings.System.getInt(resolver, 
+                    Settings.System.NAVIGATION_BAR_HINT_KEYBOARD, 1) == 0) &&
+                    DeviceUtils.isEdgeToEdgeEnabled(requireContext())) {
+                mEnableTaskbar.setEnabled(false);
             } else {
                 mEnableTaskbar.setOnPreferenceChangeListener(this);
                 mEnableTaskbar.setChecked(LineageSettings.System.getInt(resolver,
@@ -180,6 +191,12 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
             LineageSettings.System.putInt(getContentResolver(),
                     LineageSettings.System.ENABLE_TASKBAR, ((Boolean) newValue) ? 1 : 0);
             return true;
+        } else if (preference == mNavbarHint) {
+            handleNavbarHintChange((Boolean) newValue);
+            return true;
+        } else if (preference == mNavbarHintKeyboard) {
+            handleNavbarHintKeyboardChange((Boolean) newValue);
+            return true;
         }
         return false;
     }
@@ -206,12 +223,26 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
 
     private void toggleTaskBarDependencies(boolean enabled) {
         enablePreference(mNavbarHint, !enabled);
+        enablePreference(mNavbarHintKeyboard, !enabled);
     }
 
     private void enablePreference(Preference pref, boolean enabled) {
         if (pref != null) {
             pref.setEnabled(enabled);
         }
+    }
+
+    private void handleNavbarHintChange(boolean enabled) {
+        if (!enabled) {
+            mNavbarHintKeyboard.setVisible(true);
+        } else {
+            mNavbarHintKeyboard.setChecked(true);
+            mNavbarHintKeyboard.setVisible(false);        
+        }
+    }
+
+    private void handleNavbarHintKeyboardChange(boolean enabled) {
+        enablePreference(mEnableTaskbar, enabled);
     }
 
     @Override

@@ -284,4 +284,8 @@
     <!-- Parallel space -->
     <string name="laboratory_parallel_space_title">Parallel Space</string>
     <string name="laboratory_parallel_space_summary">Allow running multiple instances of the same application in parallel</string>
+
+    <!-- Keyboard hint -->
+    <string name="navigation_bar_ime_space_title">Show navigation button</string>
+    <string name="navigation_bar_ime_space_summary">For keyboard</string>
 </resources>
