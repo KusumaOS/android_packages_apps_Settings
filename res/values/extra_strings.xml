@@ -20,4 +20,8 @@
     <string name="extra_number_title">Kusuma number</string>
     <string name="extra_codename_title">Kusuma codename</string>
     <string name="base_lineage_version_title">Base LineageOS version</string>
+
+    <!-- Status bar icons -->
+    <string name="status_bar_system_icons_title">System icons</string>
+    <string name="status_bar_system_icons_summary">Control which status bar icons are shown</string>
 </resources>
