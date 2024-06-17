@@ -32,8 +32,9 @@ import com.android.settings.core.BasePreferenceController;
 public class ExtraCodenamePreferenceController extends BasePreferenceController {
 
     private static final String TAG = "ExtraCodenamePreferenceController";
-    private static final String EXTRA_PRODUCT_VERSION_CODENAME = "ro.kusuma.extra.version.codename";
-    private static final Uri INTENT_REPOSITORIES = Uri.parse("https://github.com/Kusuma-Android");
+    private static final String EXTRA_PRODUCT_VERSION_CODENAME = "ro.extra.version.codename";
+    private static final String EXTRA_PRODUCT_VERSION_URL = "ro.extra.version.url";
+    private static final Uri INTENT_EXTRA_URL = Uri.parse(SystemProperties.get(KUSUMA_EXTRA_VERSION_URL));
 
     public ExtraCodenamePreferenceController(Context context, String key) {
         super(context, key);
@@ -61,7 +62,7 @@ public class ExtraCodenamePreferenceController extends BasePreferenceController 
         PackageManager mPackageManager = mContext.getPackageManager();
         final Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(INTENT_REPOSITORIES);
+        intent.setData(INTENT_EXTRA_URL);
         if (mPackageManager.queryIntentActivities(intent, 0).isEmpty()) {
             // Don't send out the intent to stop crash
             Log.w(TAG, "queryIntentActivities() returns empty");
