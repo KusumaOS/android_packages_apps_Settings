@@ -121,7 +121,7 @@
         settings:controller="com.android.settings.gestures.PreventRingingParentPreferenceController" />
 
     <Preference
-        android:key="gesture_quick_pulldown_summary"
+        android:key="gesture_quick_torch_summary"
         android:title="@string/torch_long_press_power_gesture_title"
         android:fragment="com.android.settings.gestures.QuickTorchSettings" 
         settings:controller="com.android.settings.gestures.QuickTorchPreferenceController" />
