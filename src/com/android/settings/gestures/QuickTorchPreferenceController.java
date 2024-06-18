@@ -24,12 +24,12 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 
-public class SwipeToScreenshotPreferenceController extends GesturePreferenceController {
+public class QuickTorchPreferenceController extends GesturePreferenceController {
 
     private final int ON = 1;
     private final int OFF = 0;
 
-    public SwipeToScreenshotPreferenceController(Context context, String key) {
+    public QuickTorchPreferenceController(Context context, String key) {
         super(context, key);
     }
 
