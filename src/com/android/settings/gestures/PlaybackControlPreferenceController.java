@@ -17,17 +17,21 @@
 
 package com.android.settings.gestures;
 
-import static lineageos.providers.LineageSettings.VOLBTN_MUSIC_CONTROLS;
+import static lineageos.providers.LineageSettings.System.VOLBTN_MUSIC_CONTROLS;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import lineageos.providers.LineageSettings;
+
 public class PlaybackControlPreferenceController extends GesturePreferenceController {
 
     private final int ON = 1;
     private final int OFF = 0;
+
+    private static final String PREF_KEY_VIDEO = "playback_control_video";
 
     public PlaybackControlPreferenceController(Context context, String key) {
         super(context, key);
@@ -40,7 +44,12 @@ public class PlaybackControlPreferenceController extends GesturePreferenceContro
 
     @Override
     public boolean isSliceable() {
-        return TextUtils.equals(getPreferenceKey(), "volume_key_cursor_control");
+        return TextUtils.equals(getPreferenceKey(), "volbtn_music_controls");
+    }
+
+    @Override
+    protected String getVideoPrefKey() {
+        return PREF_KEY_VIDEO;
     }
 
     @Override
