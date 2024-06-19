@@ -17,17 +17,21 @@
 
 package com.android.settings.gestures;
 
-import static lineageos.providers.LineageSettings.CLICK_PARTIAL_SCREENSHOT;
+import static lineageos.providers.LineageSettings.System.CLICK_PARTIAL_SCREENSHOT;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import lineageos.providers.LineageSettings;
+
 public class PartialScreenshotPreferenceController extends GesturePreferenceController {
 
     private final int ON = 1;
     private final int OFF = 0;
+
+    private static final String PREF_KEY_VIDEO = "partial_screenshot_video";
 
     public PartialScreenshotPreferenceController(Context context, String key) {
         super(context, key);
@@ -41,6 +45,11 @@ public class PartialScreenshotPreferenceController extends GesturePreferenceCont
     @Override
     public boolean isSliceable() {
         return TextUtils.equals(getPreferenceKey(), "click_partial_screenshot");
+    }
+
+    @Override
+    protected String getVideoPrefKey() {
+        return PREF_KEY_VIDEO;
     }
 
     @Override
