@@ -16,11 +16,14 @@
 
 package com.android.settings.gestures;
 
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.view.View;
 
-import androidx.preference.Preference;
+import com.android.settings.R;
+import com.android.settings.core.BasePreferenceController;
 
-import lineageos.preference.LineageSystemSettingListPreference;
 import lineageos.providers.LineageSettings;
 
 public class QuickPulldownPreferenceController extends BasePreferenceController {
@@ -36,17 +39,17 @@ public class QuickPulldownPreferenceController extends BasePreferenceController 
         String summary=	"";
         switch (value) {
             case 0:
-                summary = getResources().getString(
+                summary = mContext.getResources().getString(
                     R.string.status_bar_quick_qs_pulldown_off);
                 break;
 
             case 1:
             case 2:
-                summary = getResources().getString(
+                summary = mContext.getResources().getString(
                     R.string.status_bar_quick_qs_pulldown_summary,
-                    getResources().getString(
+                    mContext.getResources().getString(
                         (value == 2) ^
-                        (getResources().getConfiguration().getLayoutDirection()
+                        (mContext.getResources().getConfiguration().getLayoutDirection()
                             == View.LAYOUT_DIRECTION_RTL)
                         ? R.string.status_bar_quick_qs_pulldown_summary_left
                         : R.string.status_bar_quick_qs_pulldown_summary_right));

@@ -19,9 +19,9 @@ package com.android.settings.gestures;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.provider.SearchIndexableResource;
-
-import androidx.preference.Preference;
+import android.view.View;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -33,8 +33,7 @@ import com.android.settingslib.search.SearchIndexable;
 import lineageos.preference.LineageSystemSettingListPreference;
 
 @SearchIndexable
-public class QuickPulldownSettings extends DashboardFragment 
-        implements Preference.OnPreferenceChangeListener{
+public class QuickPulldownSettings extends DashboardFragment {
 
     private static final String TAG = "QuickPulldownSettings";
 
@@ -44,11 +43,8 @@ public class QuickPulldownSettings extends DashboardFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.quick_pulldown_settings);
 
         mQuickPulldown = findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
-        mQuickPulldown.setOnPreferenceChangeListener(this);
-        updateQuickPulldownSummary(mQuickPulldown.getIntValue(0));
     }
 
     @Override
@@ -71,6 +67,11 @@ public class QuickPulldownSettings extends DashboardFragment
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    @Override
+    protected int getPreferenceScreenResId() {
+        return R.xml.quick_pulldown_settings;
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
