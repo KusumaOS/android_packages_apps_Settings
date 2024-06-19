@@ -17,17 +17,21 @@
 
 package com.android.settings.gestures;
 
-import static lineageos.providers.LineageSettings.TORCH_LONG_PRESS_POWER_GESTURE;
+import static lineageos.providers.LineageSettings.System.TORCH_LONG_PRESS_POWER_GESTURE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import lineageos.providers.LineageSettings;
+
 public class QuickTorchPreferenceController extends GesturePreferenceController {
 
     private final int ON = 1;
     private final int OFF = 0;
+
+    private static final String PREF_KEY_VIDEO = "quick_torch_video";
 
     public QuickTorchPreferenceController(Context context, String key) {
         super(context, key);
@@ -44,13 +48,18 @@ public class QuickTorchPreferenceController extends GesturePreferenceController 
     }
 
     @Override
+    protected String getVideoPrefKey() {
+        return PREF_KEY_VIDEO;
+    }
+
+    @Override
     public boolean setChecked(boolean isChecked) {
-        return LineageSettings.System.putInt(mContext.getContentResolver(), TORCH_LONG_PRESS_POWER_TIMEOUT,
+        return LineageSettings.System.putInt(mContext.getContentResolver(), TORCH_LONG_PRESS_POWER_GESTURE,
                 isChecked ? ON : OFF);
     }
 
     @Override
     public boolean isChecked() {
-        return LineageSettings.System.getInt(mContext.getContentResolver(), TORCH_LONG_PRESS_POWER_TIMEOUT, 0) != 0;
+        return LineageSettings.System.getInt(mContext.getContentResolver(), TORCH_LONG_PRESS_POWER_GESTURE, 0) != 0;
     }
 }
