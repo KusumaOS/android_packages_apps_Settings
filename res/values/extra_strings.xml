@@ -69,4 +69,8 @@
     <string name="power_menu_advanced_restart_title">Advanced restart</string>
     <string name="power_menu_advanced_restart_summary">When unlocked, include options in the power menu for restarting into recovery or bootloader</string>
     <string name="power_menu_emergency_affordance_enabled">Emergency affordance is enabled</string>
+
+    <!-- Calling button accessibility-->
+    <string name="home_answer_call_title">Home button answer call</string>
+    <string name="volume_answer_call_title">Volume button answer call</string>
 </resources>

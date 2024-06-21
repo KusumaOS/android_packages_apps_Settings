@@ -29,6 +29,17 @@ public class SystemControlsFragment extends DashboardFragment {
 
     private static final String TAG = "SystemControlsFragment";
 
+    private static final String KEY_VOLUME_ANSWER_CALL = "volume_answer_call";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (!Utils.isVoiceCapable(mContext)) {
+            removePreference(findPreference(KEY_VOLUME_ANSWER_CALL));
+        }
+    }
+
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.ACCESSIBILITY_SYSTEM_CONTROLS;
@@ -45,6 +56,15 @@ public class SystemControlsFragment extends DashboardFragment {
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.accessibility_system_controls);
+            new BaseSearchIndexProvider(R.xml.accessibility_system_controls) {
 
+                @Override
+                public Set<String> getNonIndexableKeys(Context context) {
+                    final Set<String> result = new ArraySet<>();
+
+                    if (!Utils.isVoiceCapable(context)) {
+                        result.add(KEY_VOLUME_ANSWER_CALL);
+                    }
+                }
+            }
 }

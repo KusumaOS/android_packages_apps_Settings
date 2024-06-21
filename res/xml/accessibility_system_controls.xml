@@ -42,6 +42,17 @@
         android:title="@string/accessibility_power_button_ends_call_prerefence_title"
         settings:controller="com.android.settings.accessibility.PowerButtonEndsCallPreferenceController"/>
 
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="volume_answer_call"
+        android:title="@string/volume_answer_call_title"
+        android:defaultValue="false" />
+
+    <SwitchPreference
+        android:key="home_answer_call"
+        android:title="@string/home_answer_call_title"
+        android:persistent="false"
+        settings:controller="com.android.settings.accessibility.HomeAnswerCallPreferenceController"/>
+
     <!-- Standard auto-rotation preference that will be shown when device state based auto-rotation
          settings are NOT available. -->
     <SwitchPreference
