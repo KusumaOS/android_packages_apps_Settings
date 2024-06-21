@@ -23,8 +23,8 @@ import com.android.internal.util.EmergencyAffordanceManager;
 import com.android.settingslib.applications.ServiceListing;
 
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.utils.TelephonyUtils;
 
 import org.lineageos.internal.util.PowerMenuConstants;
 
@@ -85,7 +85,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             }
         }
 
-        if (!TelephonyUtils.isVoiceCapable(requireActivity())) {
+        if (!Utils.isVoiceCapable(requireActivity())) {
             mPowerMenuItemsCategory.removePreference(mEmergencyPref);
             mEmergencyPref = null;
         }
