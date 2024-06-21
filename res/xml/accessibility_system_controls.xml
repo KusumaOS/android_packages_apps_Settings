@@ -71,4 +71,33 @@
         settings:keywords="@string/keywords_auto_rotate"
         settings:controller="com.android.settings.display.DeviceStateAutoRotateOverviewController"/>
 
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="volume_wake_screen"
+        android:title="@string/button_wake_title"
+        android:defaultValue="false" />
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="home_wake_screen"
+        android:title="@string/button_wake_title"
+        android:defaultValue="true" />
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="back_wake_screen"
+        android:title="@string/button_wake_title"
+        android:defaultValue="false" />
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="menu_wake_screen"
+        android:title="@string/button_wake_title"
+        android:defaultValue="false" />
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="assist_wake_screen"
+        android:title="@string/button_wake_title"
+        android:defaultValue="false" />
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="app_switch_wake_screen"
+        android:title="@string/button_wake_title"
+        android:defaultValue="false" />
 </PreferenceScreen>
