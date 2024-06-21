@@ -21,6 +21,7 @@ import android.app.settings.SettingsEnums;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.utils.DeviceUtils;
 import com.android.settingslib.search.SearchIndexable;
 
 /** Accessibility settings for system controls. */
@@ -35,8 +36,10 @@ public class SystemControlsFragment extends DashboardFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!Utils.isVoiceCapable(mContext)) {
-            removePreference(findPreference(KEY_VOLUME_ANSWER_CALL));
+        if (DeviceUtils.hasVolumeKeys(mContext.getActivity())) {
+            if (!Utils.isVoiceCapable(mContext)) {
+                removePreference(findPreference(KEY_VOLUME_ANSWER_CALL));
+            }
         }
     }
 
