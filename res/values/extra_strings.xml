@@ -75,9 +75,12 @@
     <string name="volume_answer_call_title">Volume button answer call</string>
 
     <!-- Navigation bar -->
+    <string name="navigation_bar_invert_layout_title">Invert layout</string>
+    <string name="navigation_bar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
     <string name="navigation_bar_back_long_press_title">Back long press action</string>
     <string name="navigation_bar_home_long_press_title">Home long press action</string>
     <string name="navigation_bar_home_double_tap_title">Home double tap action</string>
+    <string name="navigation_bar_app_switch_long_press_title">Recents long press action</string>
 
     <!-- Hardware key rebinding -->
     <string name="hardware_keys_action_nothing">No action</string>
@@ -91,4 +94,7 @@
     <string name="hardware_keys_action_last_app">Last app</string>
     <string name="hardware_keys_action_split_screen">Split screen</string>
     <string name="hardware_keys_action_kill_app">Kill foreground app</string>
+
+    <!-- Taskbar -->
+    <string name="navigation_bar_enable_taskbar_title">Enable taskbar</string>
 </resources>
