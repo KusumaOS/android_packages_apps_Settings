@@ -31,6 +31,13 @@ import com.android.settings.widget.LabeledSeekBarPreference;
 import com.android.settings.widget.SeekBarPreference;
 import com.android.settingslib.search.SearchIndexable;
 
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static com.android.systemui.shared.recents.utilities.Utilities.isLargeScreen;
 
 import lineageos.providers.LineageSettings;
@@ -51,11 +58,18 @@ public class GestureNavigationSettingsFragment extends DashboardFragment {
 
     private static final String NAVIGATION_BAR_HINT_KEY = "navigation_bar_hint";
 
+    private static final String KEY_EDGE_LONG_SWIPE = "navigation_bar_edge_long_swipe";
+    private static final String KEY_ENABLE_TASKBAR = "enable_taskbar";
+
     private WindowManager mWindowManager;
     private BackGestureIndicatorView mIndicatorView;
 
     private float[] mBackGestureInsetScales;
     private float mDefaultBackGestureInset;
+
+    private ListPreference mEdgeLongSwipeAction;
+    private SwitchPreference mEnableTaskbar;
+    private SwitchPreference mNavbarHint;
 
     public GestureNavigationSettingsFragment() {
         super();
@@ -64,6 +78,50 @@ public class GestureNavigationSettingsFragment extends DashboardFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Action edgeLongSwipeAction = Action.fromSettings(resolver,
+                LineageSettings.System.KEY_EDGE_LONG_SWIPE_ACTION,
+                Action.NOTHING);
+
+        // Edge long swipe gesture
+        mEdgeLongSwipeAction = initList(KEY_EDGE_LONG_SWIPE, edgeLongSwipeAction);
+
+        mNavbarHint = findPreference(NAVIGATION_BAR_HINT_KEY);
+
+        mEnableTaskbar = findPreference(KEY_ENABLE_TASKBAR);
+        if (mEnableTaskbar != null) {
+            if (!isLargeScreen(requireContext()) || !hasNavigationBar()) {
+                getPreferenceScreen().removePreference(mEnableTaskbar);
+            } else {
+                mEnableTaskbar.setOnPreferenceChangeListener(this);
+                mEnableTaskbar.setChecked(LineageSettings.System.getInt(resolver,
+                        LineageSettings.System.ENABLE_TASKBAR,
+                        isLargeScreen(requireContext()) ? 1 : 0) == 1);
+                toggleTaskBarDependencies(mEnableTaskbar.isChecked());
+            }
+        }
+
+        List<Integer> unsupportedValues = new ArrayList<>();
+        List<String> entries = new ArrayList<>(
+                Arrays.asList(res.getStringArray(R.array.hardware_keys_action_entries)));
+        List<String> values = new ArrayList<>(
+                Arrays.asList(res.getStringArray(R.array.hardware_keys_action_values)));
+
+        // hide split screen option unconditionally - it doesn't work at the moment
+        // once someone gets it working again: hide it only for low-ram devices
+        // (check ActivityManager.isLowRamDeviceStatic())
+        unsupportedValues.add(Action.SPLIT_SCREEN.ordinal());
+
+        for (int unsupportedValue: unsupportedValues) {
+            entries.remove(unsupportedValue);
+            values.remove(unsupportedValue);
+        }
+
+        String[] actionEntries = entries.toArray(new String[0]);
+        String[] actionValues = values.toArray(new String[0]);
+
+        mEdgeLongSwipeAction.setEntries(actionEntries);
+        mEdgeLongSwipeAction.setEntryValues(actionValues);
 
         mIndicatorView = new BackGestureIndicatorView(getActivity());
         mWindowManager = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
@@ -81,13 +139,6 @@ public class GestureNavigationSettingsFragment extends DashboardFragment {
 
         initSeekBarPreference(LEFT_EDGE_SEEKBAR_KEY);
         initSeekBarPreference(RIGHT_EDGE_SEEKBAR_KEY);
-
-        boolean isTaskbarEnabled = LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.ENABLE_TASKBAR, isLargeScreen(getContext()) ? 1 : 0) == 1;
-        if (isTaskbarEnabled) {
-            getPreferenceScreen().removePreference(
-                    getPreferenceScreen().findPreference(NAVIGATION_BAR_HINT_KEY));
-        }
     }
 
     @Override
@@ -104,6 +155,53 @@ public class GestureNavigationSettingsFragment extends DashboardFragment {
 
         mWindowManager.removeView(mIndicatorView);
     }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mEdgeLongSwipeAction) {
+            handleListChange(mEdgeLongSwipeAction, newValue,
+                    LineageSettings.System.KEY_EDGE_LONG_SWIPE_ACTION);
+            return true;
+        } else if (preference == mEnableTaskbar) {
+            toggleTaskBarDependencies((Boolean) newValue);
+            LineageSettings.System.putInt(getContentResolver(),
+                    LineageSettings.System.ENABLE_TASKBAR, ((Boolean) newValue) ? 1 : 0);
+            return true;
+        }
+        return false;
+    }
+
+    private ListPreference initList(String key, Action value) {
+        return initList(key, value.ordinal());
+    }
+
+    private ListPreference initList(String key, int value) {
+        ListPreference list = getPreferenceScreen().findPreference(key);
+        if (list == null) return null;
+        list.setValue(Integer.toString(value));
+        list.setSummary(list.getEntry());
+        list.setOnPreferenceChangeListener(this);
+        return list;
+    }
+
+    private void handleListChange(ListPreference pref, Object newValue, String setting) {
+        String value = (String) newValue;
+        int index = pref.findIndexOfValue(value);
+        pref.setSummary(pref.getEntries()[index]);
+        LineageSettings.System.putInt(getContentResolver(), setting, Integer.parseInt(value));
+    }
+
+    private void toggleTaskBarDependencies(boolean enabled) {
+        enablePreference(mNavbarHint, !enabled);
+        enablePreference(mEdgeLongSwipeAction, !enabled);
+    }
+
+    private void enablePreference(Preference pref, boolean enabled) {
+        if (pref != null) {
+            pref.setEnabled(enabled);
+        }
+    }
+
 
     @Override
     protected int getPreferenceScreenResId() {

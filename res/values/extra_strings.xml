@@ -97,4 +97,7 @@
 
     <!-- Taskbar -->
     <string name="navigation_bar_enable_taskbar_title">Enable taskbar</string>
+
+    <!-- Gesture navigation -->
+    <string name="navigation_bar_edge_long_swipe_title">Edge long swipe action</string>
 </resources>
