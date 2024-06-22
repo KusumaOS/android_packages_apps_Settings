@@ -50,6 +50,9 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment {
     private static final String KEY_NAVIGATION_APP_SWITCH_LONG_PRESS =
             "navigation_app_switch_long_press";
 
+    private static final String KEY_NAV_BAR_INVERSE = "sysui_nav_bar_inverse";
+    private static final String KEY_ENABLE_TASKBAR = "enable_taskbar";
+
     private ListPreference mNavigationBackLongPressAction;
     private ListPreference mNavigationHomeLongPressAction;
     private ListPreference mNavigationHomeDoubleTapAction;
@@ -104,7 +107,7 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment {
         mEnableTaskbar = findPreference(KEY_ENABLE_TASKBAR);
         if (mEnableTaskbar != null) {
             if (!isLargeScreen(requireContext()) || !hasNavigationBar()) {
-                mNavigationPreferencesCat.removePreference(mEnableTaskbar);
+                getPreferenceScreen().removePreference(mEnableTaskbar);
             } else {
                 mEnableTaskbar.setOnPreferenceChangeListener(this);
                 mEnableTaskbar.setChecked(LineageSettings.System.getInt(resolver,
