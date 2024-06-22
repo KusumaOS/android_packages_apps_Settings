@@ -17,8 +17,8 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
-    android:key="button_navigation_settings_page"
-    android:title="@string/legacy_navigation_title"
+    android:key="two_button_navigation_settings_page"
+    android:title="@string/swipe_up_to_switch_apps_title"
     settings:keywords="@string/keywords_button_navigation_settings">
 
     <!-- Animation uses embedded PNGs and lottie requires asset folder to be set despite

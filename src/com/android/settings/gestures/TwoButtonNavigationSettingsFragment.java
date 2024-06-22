@@ -16,7 +16,7 @@
 
 package com.android.settings.gestures;
 
-import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_3BUTTON_OVERLAY;
+import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_2BUTTON_OVERLAY;
 
 import android.app.settings.SettingsEnums;
 import android.content.Context;
@@ -27,16 +27,15 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 /**
- * A fragment that includes settings for 3-button navigation modes.
+ * A fragment that includes settings for 2-button navigation modes.
  */
 @SearchIndexable(forTarget = SearchIndexable.MOBILE)
-public class ButtonNavigationSettingsFragment extends DashboardFragment {
+public class TwoButtonNavigationFragment extends DashboardFragment {
 
-    private static final String TAG = "ButtonNavigationSettingsFragment";
+    private static final String TAG = "TwoButtonNavigationFragment";
 
-    public static final String BUTTON_NAVIGATION_SETTINGS =
-            "com.android.settings.BUTTON_NAVIGATION_SETTINGS";
-
+    public static final String TWO_BUTTON_NAVIGATION_SETTINGS =
+            "com.android.settings.TWO_BUTTON_NAVIGATION_SETTINGS";
 
     @Override
     public int getMetricsCategory() {
@@ -45,7 +44,7 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment {
 
     @Override
     protected int getPreferenceScreenResId() {
-        return R.xml.button_navigation_settings;
+        return R.xml.two_button_navigation_settings;
     }
 
     @Override
@@ -54,12 +53,12 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment {
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.button_navigation_settings) {
+            new BaseSearchIndexProvider(R.xml.two_button_navigation_settings) {
 
                 @Override
                 protected boolean isPageSearchEnabled(Context context) {
                     return SystemNavigationPreferenceController.isOverlayPackageAvailable(context,
-                            NAV_BAR_MODE_3BUTTON_OVERLAY);
+                            NAV_BAR_MODE_2BUTTON_OVERLAY);
                 }
             };
 }

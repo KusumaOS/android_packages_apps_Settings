@@ -170,8 +170,15 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     GestureNavigationSettingsFragment.GESTURE_NAVIGATION_SETTINGS)));
         }
 
-        if (KEY_SYSTEM_NAV_2BUTTONS.equals(info.getKey()) || KEY_SYSTEM_NAV_3BUTTONS.equals(
-                info.getKey())) {
+        if (KEY_SYSTEM_NAV_2BUTTONS.equals(info.getKey()) {
+            pref.setExtraWidgetOnClickListener((v) ->
+                    new SubSettingLauncher(getContext())
+                            .setDestination(TwoButtonNavigationSettingsFragment.class.getName())
+                            .setSourceMetricsCategory(SettingsEnums.SETTINGS_GESTURE_SWIPE_UP)
+                            .launch());
+        }
+
+        if (KEY_SYSTEM_NAV_3BUTTONS.equals(info.getKey()) {
             pref.setExtraWidgetOnClickListener((v) ->
                     new SubSettingLauncher(getContext())
                             .setDestination(ButtonNavigationSettingsFragment.class.getName())
