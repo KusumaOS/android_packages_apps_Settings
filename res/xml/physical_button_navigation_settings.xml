@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright (C) 2018 The Android Open Source Project
+  Copyright (C) 2017 The Android Open Source Project
+  Copyright (C) 2024 Kusuma
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -13,16 +14,12 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
+-->
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res-auto"
-    android:title="@string/system_navigation_title"
-    settings:keywords="@string/keywords_system_navigation"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:key="physical_button_navigation_screen"
+    android:title="@string/disable_navkeys_title">
 
-    <com.android.settingslib.PrimarySwitchPreference
-        android:key="disable_nav_keys"
-        android:title="@string/disable_navkeys_title"
-        android:fragment="com.android.settings.gestures.PhysicalButtonNavigationSettings"
-        settings:controller="com.android.settings.gestures.PhysicalButtonNavigationParentPreferenceController" />
+</PreferenceScreen>

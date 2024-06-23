@@ -100,4 +100,6 @@
 
     <!-- Gesture navigation -->
     <string name="navigation_bar_edge_long_swipe_title">Edge long swipe action</string>
+
+    <string name="disable_navkeys_title">Physical button navigation</string>
 </resources>
