@@ -37,7 +37,7 @@ public class HomeAnswerCallPreferenceController extends TogglePreferenceControll
         final int incallHomeBehavior = LineageSettings.Secure.getInt(mContext.getContentResolver(),
                 LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
                 LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT);
-        return incallHomeBehavior == LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER
+        return incallHomeBehavior == LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class HomeAnswerCallPreferenceController extends TogglePreferenceControll
 
     @Override
     public int getAvailabilityStatus() {
-        return !DeviceUtils.hasHomeKey(mContext.getActivity())
+        return !DeviceUtils.hasHomeKey(mContext)
                 || !Utils.isVoiceCapable(mContext) ? UNSUPPORTED_ON_DEVICE : AVAILABLE;
     }
 

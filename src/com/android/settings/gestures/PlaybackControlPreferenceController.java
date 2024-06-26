@@ -39,6 +39,13 @@ public class PlaybackControlPreferenceController extends GesturePreferenceContro
 
     @Override
     public int getAvailabilityStatus() {
+        boolean enabled = LineageSettings.System.getInt(
+                mContext.getContentResolver(),
+                LineageSettings.System.VOLUME_WAKE_SCREEN, 0) != 0;
+
+        if (!enabled) {
+        	return DISABLED_DEPENDENT_SETTING;
+        }
         return AVAILABLE;
     }
 

@@ -20,9 +20,3 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/system_navigation_title"
     settings:keywords="@string/keywords_system_navigation"/>
-
-    <com.android.settingslib.PrimarySwitchPreference
-        android:key="disable_nav_keys"
-        android:title="@string/disable_navkeys_title"
-        android:fragment="com.android.settings.gestures.PhysicalButtonNavigationSettings"
-        settings:controller="com.android.settings.gestures.PhysicalButtonNavigationParentPreferenceController" />

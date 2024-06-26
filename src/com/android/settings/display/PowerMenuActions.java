@@ -19,6 +19,8 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.util.EmergencyAffordanceManager;
 import com.android.settingslib.applications.ServiceListing;
 
@@ -219,5 +221,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mEmergencyPref.setSummary(null);
             }
         }
+    }
+
+    @Override
+    public int getMetricsCategory() {
+        return -1;
     }
 }

@@ -19,7 +19,15 @@ package com.android.settings.gestures;
 import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_2BUTTON_OVERLAY;
 
 import android.app.settings.SettingsEnums;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.util.Log;
+import android.view.Display;
+import android.view.IWindowManager;
+import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -28,18 +36,27 @@ import com.android.settingslib.search.SearchIndexable;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
+
+import static com.android.systemui.shared.recents.utilities.Utilities.isLargeScreen;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.lineageos.internal.util.DeviceKeysConstants.*;
+
+import lineageos.hardware.LineageHardwareManager;
+import lineageos.providers.LineageSettings;
+
 /**
  * A fragment that includes settings for 2-button navigation modes.
  */
 @SearchIndexable(forTarget = SearchIndexable.MOBILE)
-public class TwoButtonNavigationFragment extends DashboardFragment {
+public class TwoButtonNavigationSettingsFragment extends DashboardFragment
+        implements Preference.OnPreferenceChangeListener {
 
-    private static final String TAG = "TwoButtonNavigationFragment";
+    private static final String TAG = "TwoButtonNavigationSettingsFragment";
 
     public static final String TWO_BUTTON_NAVIGATION_SETTINGS =
             "com.android.settings.TWO_BUTTON_NAVIGATION_SETTINGS";
@@ -55,6 +72,9 @@ public class TwoButtonNavigationFragment extends DashboardFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final Resources res = getResources();
+        final ContentResolver resolver = requireActivity().getContentResolver();
 
         Action defaultBackLongPressAction = Action.fromIntSafe(res.getInteger(
                 org.lineageos.platform.internal.R.integer.config_longPressOnBackBehavior));
@@ -151,6 +171,22 @@ public class TwoButtonNavigationFragment extends DashboardFragment {
         LineageSettings.System.putInt(getContentResolver(), setting, Integer.parseInt(value));
     }
 
+    private static boolean hasNavigationBar() {
+        boolean hasNavigationBar = false;
+        try {
+            IWindowManager windowManager = WindowManagerGlobal.getWindowManagerService();
+            hasNavigationBar = windowManager.hasNavigationBar(Display.DEFAULT_DISPLAY);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
+        }
+        return hasNavigationBar;
+    }
+
+    private static boolean isKeyDisablerSupported(Context context) {
+        final LineageHardwareManager hardware = LineageHardwareManager.getInstance(context);
+        return hardware.isSupported(LineageHardwareManager.FEATURE_KEY_DISABLE);
+    }
+
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.SETTINGS_BUTTON_NAV_DLG;
@@ -169,10 +205,14 @@ public class TwoButtonNavigationFragment extends DashboardFragment {
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.two_button_navigation_settings) {
 
-                @Override
-                protected boolean isPageSearchEnabled(Context context) {
-                    return SystemNavigationPreferenceController.isOverlayPackageAvailable(context,
-                            NAV_BAR_MODE_2BUTTON_OVERLAY);
-                }
-            };
+        @Override
+        protected boolean isPageSearchEnabled(Context context) {
+            boolean isTaskbarEnabled = LineageSettings.System.getInt(context.getContentResolver(),
+                    LineageSettings.System.ENABLE_TASKBAR, isLargeScreen(context) ? 1 : 0) == 1;
+
+            return (hasNavigationBar() || isKeyDisablerSupported(context)) &&
+                    !isTaskbarEnabled && SystemNavigationPreferenceController.isOverlayPackageAvailable(context,
+                    NAV_BAR_MODE_2BUTTON_OVERLAY);
+        }
+    };
 }

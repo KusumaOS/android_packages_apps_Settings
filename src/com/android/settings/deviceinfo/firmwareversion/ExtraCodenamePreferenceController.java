@@ -34,7 +34,7 @@ public class ExtraCodenamePreferenceController extends BasePreferenceController 
     private static final String TAG = "ExtraCodenamePreferenceController";
     private static final String EXTRA_PRODUCT_VERSION_CODENAME = "ro.extra.version.codename";
     private static final String EXTRA_PRODUCT_VERSION_URL = "ro.extra.version.url";
-    private static final Uri INTENT_EXTRA_URL = Uri.parse(SystemProperties.get(KUSUMA_EXTRA_VERSION_URL));
+    private static final Uri INTENT_EXTRA_URL = Uri.parse(SystemProperties.get(EXTRA_PRODUCT_VERSION_URL));
 
     public ExtraCodenamePreferenceController(Context context, String key) {
         super(context, key);
