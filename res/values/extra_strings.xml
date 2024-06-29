@@ -23,7 +23,7 @@
 
     <!-- Status bar icons -->
     <string name="category_name_status_bar_display">Status bar</string>
-    <string name="status_bar_system_icons_title">System icons</string>
+    <string name="status_bar_system_icons_title">Status bar icons</string>
     <string name="status_bar_system_icons_summary">Control which status bar icons are shown</string>
 
     <!-- Quick pulldown -->
@@ -48,6 +48,7 @@
     <!-- Playback control -->
     <string name="volbtn_music_controls_title">Control playback</string>
     <string name="volbtn_music_controls_summary">Seek music tracks by long pressing the volume keys while the display is off</string>
+    <string name="volbtn_music_controls_summary_disabled">To enable, first change volume button wake device to disabled </string>
 
     <!-- Partial screenshot -->
     <string name="click_partial_screenshot_title">Partial screenshot</string>
@@ -55,15 +56,15 @@
 
     <!-- Power menu -->
     <string name="category_name_global_actions_display">Global actions</string>
-    <string name="power_menu_title">Power menu</string>
-    <string name="power_menu_items_title">Power menu items</string>
+    <string name="power_menu_title">Global action items</string>
+    <string name="power_menu_summary">Control which global action items are shown</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
     <string name="power_menu_screenshot_summary">Long-press for partial screenshot</string>
     <string name="power_menu_airplane_title">Airplane mode</string>
     <string name="power_menu_users_title">User switcher</string>
     <string name="power_menu_bug_report_title">Bug report</string>
     <string name="power_menu_bug_report_devoptions_unavailable">Bug reporting is disabled as development settings aren\'t enabled</string>
-    <string name="power_menu_bug_report_unavailable_for_user">Bug reporting is disabled for non-primary users.</string>
+    <string name="power_menu_bug_report_unavailable_for_user">Bug reporting is disabled for non-primary users</string>
     <string name="power_menu_emergency_title">Emergency</string>
     <string name="power_menu_devicecontrols_title">Device controls</string>
     <string name="power_menu_advanced_restart_title">Advanced restart</string>
@@ -118,11 +119,11 @@
     <string name="hardware_keys_back_long_press_title">@string/navigation_bar_back_long_press_title</string>
     <string name="hardware_keys_home_long_press_title">@string/navigation_bar_home_long_press_title</string>
     <string name="hardware_keys_home_double_tap_title">@string/navigation_bar_home_double_tap_title</string>
-    <string name="hardware_keys_menu_short_press_title">Menu button tap action</string>
-    <string name="hardware_keys_menu_long_press_title">Menu button long press action</string>
-    <string name="hardware_keys_assist_short_press_title">Search button tap action</string>
-    <string name="hardware_keys_assist_long_press_title">Search button long press action</string>
-    <string name="hardware_keys_app_switch_short_press_title">Recents button tap action</string>
+    <string name="hardware_keys_menu_short_press_title">Menu tap action</string>
+    <string name="hardware_keys_menu_long_press_title">Menu long press action</string>
+    <string name="hardware_keys_assist_short_press_title">Search tap action</string>
+    <string name="hardware_keys_assist_long_press_title">Search long press action</string>
+    <string name="hardware_keys_app_switch_short_press_title">Recents tap action</string>
     <string name="hardware_keys_app_switch_long_press_title">@string/navigation_bar_app_switch_long_press_title</string>
     <string name="swap_capacitive_keys_title">Swap capacitive buttons</string>
     <string name="swap_capacitive_keys_summary">Swap the order of recents and back buttons</string>
@@ -140,4 +141,14 @@
     <string name="backlight_summary_enabled_with_timeout">Enabled for <xliff:g id="timeout">%s</xliff:g></string>
     <string name="backlight_summary_enabled">Enabled</string>
     <string name="reset">Reset</string>
+
+    <!-- Camera button -->
+    <string name="hardware_keys_camera_key_title">Camera button</string>
+    <string name="camera_sleep_on_release_title">Screen peek</string>
+    <string name="camera_sleep_on_release_summary">A half press will keep the screen on only while the button is held down</string>
+    <string name="camera_launch_title">Launch camera</string>
+    <string name="camera_launch_summary">A longpress and release will launch camera</string>
+
+    <!-- Additional buttons -->
+    <string name="additional_buttons_title">Additional buttons</string>
 </resources>

@@ -31,7 +31,7 @@ import com.android.settingslib.search.SearchIndexable;
 @SearchIndexable
 public class PlaybackControlSettings extends DashboardFragment {
 
-     private static final String TAG = "PlaybackControlSettings";
+    private static final String TAG = "PlaybackControlSettings";
 
     @Override
     public void onAttach(Context context) {

@@ -250,8 +250,9 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     c.getText(R.string.legacy_navigation_summary),
                     KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
         }
-        if (isKeyDisablerSupported(getActivity()) || 
-                DeviceUtils.hasPhysicalNavKeys(getActivity())) {
+        if ((isKeyDisablerSupported(getActivity()) || 
+                DeviceUtils.hasPhysicalNavKeys(getActivity())) &&
+                !isTaskbarEnabled) {
             candidates.add(new CandidateInfoExtra(
                     c.getText(R.string.physical_button_navigation_title),
                     c.getText(R.string.physical_button_navigation_summary),

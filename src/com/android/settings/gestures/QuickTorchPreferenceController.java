@@ -20,6 +20,7 @@ package com.android.settings.gestures;
 import static lineageos.providers.LineageSettings.System.TORCH_LONG_PRESS_POWER_GESTURE;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -39,7 +40,9 @@ public class QuickTorchPreferenceController extends GesturePreferenceController 
 
     @Override
     public int getAvailabilityStatus() {
-        return AVAILABLE;
+        return mContext.getPackageManager()
+                .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH) ? AVAILABLE :
+                        UNSUPPORTED_ON_DEVICE;
     }
 
     @Override

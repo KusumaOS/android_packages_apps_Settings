@@ -20,19 +20,6 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/gesture_preference_title">
 
-    <lineageos.preference.LineagePartsPreference
-        android:key="touchscreen_gesture_settings"
-        settings:requiresFeature="lineagehardware:FEATURE_TOUCHSCREEN_GESTURES" />
-
-    <lineageos.preference.RemotePreference
-            android:key="device_touchscreen_gesture_settings"
-            android:title="@string/touchscreen_gesture_settings_title"
-            android:summary="@string/touchscreen_gesture_settings_summary"
-            settings:replacesKey="touchscreen_gesture_settings"
-            settings:requiresFeature="lineagehardware:FEATURE_TOUCHSCREEN_GESTURES">
-        <intent android:action="org.lineageos.settings.device.GESTURE_SETTINGS" />
-    </lineageos.preference.RemotePreference>
-
     <Preference
         android:key="gesture_assist_input_summary"
         android:title="@string/assist_gesture_title"
@@ -124,7 +111,9 @@
         android:key="playback_control_summary"
         android:title="@string/volbtn_music_controls_title"
         android:fragment="com.android.settings.gestures.PlaybackControlSettings" 
-        settings:controller="com.android.settings.gestures.PlaybackControlPreferenceController" />
+        settings:controller="com.android.settings.gestures.PlaybackControlPreferenceController" 
+        settings:requiresConfig="@*lineageos.platform:integer/config_deviceHardwareKeys"
+        settings:requiresConfigMask="64" />
 
     <Preference
         android:key="gesture_quick_torch_summary"
@@ -137,4 +126,17 @@
         android:title="@string/click_partial_screenshot_title"
         android:fragment="com.android.settings.gestures.PartialScreenshotSettings" 
         settings:controller="com.android.settings.gestures.PartialScreenshotPreferenceController" />
+
+    <lineageos.preference.LineagePartsPreference
+        android:key="touchscreen_gesture_settings"
+        settings:requiresFeature="lineagehardware:FEATURE_TOUCHSCREEN_GESTURES" />
+
+    <lineageos.preference.RemotePreference
+            android:key="device_touchscreen_gesture_settings"
+            android:title="@string/touchscreen_gesture_settings_title"
+            android:summary="@string/touchscreen_gesture_settings_summary"
+            settings:replacesKey="touchscreen_gesture_settings"
+            settings:requiresFeature="lineagehardware:FEATURE_TOUCHSCREEN_GESTURES">
+        <intent android:action="org.lineageos.settings.device.GESTURE_SETTINGS" />
+    </lineageos.preference.RemotePreference>
 </PreferenceScreen>
