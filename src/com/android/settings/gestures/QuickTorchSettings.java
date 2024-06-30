@@ -17,8 +17,10 @@
 
 package com.android.settings.gestures;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 
 import com.android.internal.logging.MetricsLogger;
@@ -28,14 +30,58 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-@SearchIndexable
-public class QuickTorchSettings extends DashboardFragment {
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 
-     private static final String TAG = "QuickTorchSettings";
+import lineageos.providers.LineageSettings;
+
+@SearchIndexable
+public class QuickTorchSettings extends DashboardFragment
+        implements Preference.OnPreferenceChangeListener {
+
+    private static final String TAG = "QuickTorchSettings";
+
+    private static final String KEY_TORCH_LONG_PRESS_POWER_TIMEOUT =
+            "torch_long_press_power_timeout";
+
+    private ListPreference mTorchLongPressPowerTimeout;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        final ContentResolver resolver = requireActivity().getContentResolver();
+
+        final int torchLongPressPowerTimeout = LineageSettings.System.getInt(resolver,
+                LineageSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0);
+        mTorchLongPressPowerTimeout = initList(KEY_TORCH_LONG_PRESS_POWER_TIMEOUT,
+                torchLongPressPowerTimeout);
+    }
+
+    private ListPreference initList(String key, int value) {
+        ListPreference list = getPreferenceScreen().findPreference(key);
+        if (list == null) return null;
+        list.setValue(Integer.toString(value));
+        list.setSummary(list.getEntry());
+        list.setOnPreferenceChangeListener(this);
+        return list;
+    }
+
+    private void handleListChange(ListPreference pref, Object newValue, String setting) {
+        String value = (String) newValue;
+        int index = pref.findIndexOfValue(value);
+        pref.setSummary(pref.getEntries()[index]);
+        LineageSettings.System.putInt(getContentResolver(), setting, Integer.parseInt(value));
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mTorchLongPressPowerTimeout) {
+            handleListChange(mTorchLongPressPowerTimeout, newValue,
+                    LineageSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT);
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -19,9 +19,7 @@ package com.android.settings.gestures;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.provider.SearchIndexableResource;
-import android.view.View;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -30,33 +28,32 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-import lineageos.preference.LineageSystemSettingListPreference;
+import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.core.AbstractPreferenceController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SearchIndexable
 public class QuickPulldownSettings extends DashboardFragment {
 
     private static final String TAG = "QuickPulldownSettings";
 
-    private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
-    private LineageSystemSettingListPreference mQuickPulldown;
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        mQuickPulldown = findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        return buildPreferenceControllers(context, getSettingsLifecycle());
+    }
 
-        // Adjust status bar preferences for RTL
-        if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
-            mQuickPulldown.setEntries(R.array.status_bar_quick_qs_pulldown_entries_rtl);
-        } else {
-            mQuickPulldown.setEntries(R.array.status_bar_quick_qs_pulldown_entries);
-        }
+    private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
+            Lifecycle lifecycle) {
+        List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new QuickPulldownSelectorPreferenceController(context, lifecycle));
+        return controllers;
     }
 
     @Override
@@ -75,5 +72,11 @@ public class QuickPulldownSettings extends DashboardFragment {
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.quick_pulldown_settings);
+            new BaseSearchIndexProvider(R.xml.quick_pulldown_settings) {
+            	@Override
+                public List<AbstractPreferenceController> createPreferenceControllers(
+                        Context context) {
+                    return buildPreferenceControllers(context, null);
+                }
+            };
 }
