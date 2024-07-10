@@ -22,7 +22,7 @@
     settings:keywords="@string/keywords_button_navigation_settings">
 
     <!-- Animation uses embedded PNGs and lottie requires asset folder to be set despite
-     embedding. -->
+     embedding.
     <com.android.settingslib.widget.IllustrationPreference
         android:key="gesture_power_menu_video"
         settings:searchable="false"
@@ -35,6 +35,7 @@
         android:title="@string/assistant_long_press_home_gesture_title"
         android:summary="@string/assistant_long_press_home_gesture_summary"
         settings:controller="com.android.settings.gestures.ButtonNavigationSettingsAssistController"/>
+    -->
 
     <lineageos.preference.SecureSettingSwitchPreference
         android:key="sysui_nav_bar_inverse"
@@ -56,7 +57,6 @@
         android:title="@string/navigation_bar_home_long_press_title"
         android:entries="@array/hardware_keys_action_entries"
         android:entryValues="@array/hardware_keys_action_values"
-        android:dependency="assistant_long_press_home_gesture"
         android:persistent="false" />
 
     <ListPreference
