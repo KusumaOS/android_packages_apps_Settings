@@ -18,6 +18,7 @@ package com.android.settings.security;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.android.settings.R;
 import com.android.settings.biometrics.combination.CombinedBiometricStatusPreferenceController;
@@ -33,6 +34,9 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +49,19 @@ public class SecuritySettings extends DashboardFragment {
     public static final int CHANGE_TRUST_AGENT_SETTINGS = 126;
     public static final int UNIFY_LOCK_CONFIRM_PROFILE_REQUEST = 129;
     public static final int UNUNIFY_LOCK_CONFIRM_DEVICE_REQUEST = 130;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final PreferenceCategory securityStatusCategory = 
+                prefScreen.findPreference("security_status");
+
+        if (securityStatusCategory.getPreferenceCount() == 0) {
+            prefScreen.removePreference(securityStatusCategory);
+        }
+    };
 
     @Override
     public int getMetricsCategory() {
@@ -130,6 +147,13 @@ public class SecuritySettings extends DashboardFragment {
                     return !FeatureFactory.getFactory(context).getSecuritySettingsFeatureProvider()
                             .hasAlternativeSecuritySettingsFragment()
                             && !SafetyCenterManagerWrapper.get().isEnabled(context);
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    final List<String> keys = super.getNonIndexableKeys(context);
+                    keys.add("security_status");
+                    return keys;
                 }
             };
 
