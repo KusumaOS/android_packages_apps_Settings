@@ -15,7 +15,7 @@
     </plurals>
 
     <plurals name="wifi_hotspot_client_limit_summary">
-        <item quantity="other">Up to <xliff:g id="device_num">%1$d</xliff:g> devices can connect to this hotspot</item>
-        <item quantity="one">Up to <xliff:g id="device_num">%1$d</xliff:g> device can connect to this hotspot</item>
+        <item quantity="other">Up to <xliff:g id="device_num">%1$d</xliff:g> devices allowed to connect to the hotspot</item>
+        <item quantity="one">Up to <xliff:g id="device_num">%1$d</xliff:g> device allowed to connect to the hotspot</item>
     </plurals>
 </resources>

@@ -33,8 +33,8 @@
     <string name="backup_transport_title">Select backup provider</string>
 
     <!-- Black theme for dark mode -->
-    <string name="berry_black_theme_title">Pure black</string>
-    <string name="berry_black_theme_summary">Pure black background for dark theme</string>
+    <string name="berry_black_theme_title">Use darkest color</string>
+    <string name="berry_black_theme_summary">For background</string>
 
     <!-- String for removal of sensitive info on about, depending on tap -->
     <string name="device_info_protected_single_press">Tap to show info</string>
@@ -54,7 +54,7 @@
 
     <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Tap to sleep</string>
-    <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar or lockscreen to turn off the display</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the home screen, status bar or lock screen to turn screen off</string>
 
     <!-- High touch polling rate -->
     <string name="high_touch_polling_rate_title">High touch polling rate</string>
@@ -69,8 +69,8 @@
     <string name="high_touch_sensitivity_summary">Increase touchscreen sensitivity so it can be used while wearing gloves</string>
 
     <!-- Hotspot extras -->
-    <string name="tethering_allow_vpn_upstreams_title">Allow clients to use VPNs</string>
-    <string name="tethering_allow_vpn_upstreams_summary">Permit hotspot clients to use this device\u2019s VPN connections for upstream connectivity</string>
+    <string name="tethering_allow_vpn_upstreams_title">VPN tethering</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Share phone\'s VPN connection via hotspot and tethering</string>
 
     <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
@@ -117,8 +117,8 @@
     <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Touch the sensor on the side of your phone.</string>
 
     <!-- Navigation bar hint -->
-    <string name="show_navbar_hint_title">Navigation hint</string>
-    <string name="show_navbar_hint_summary">Show navigation hint bar at the bottom of the screen</string>
+    <string name="show_navbar_hint_title">Gesture hint</string>
+    <string name="show_navbar_hint_summary">Show gesture navigation hint on the bottom screen</string>
 
     <!-- Notification sound timeout -->
     <string name="app_notification_sound_timeout_title">Minimum time between notification sounds</string>
@@ -132,8 +132,8 @@
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
 
     <!-- One shot automatic brightness -->
-    <string name="auto_brightness_one_shot_title">One shot auto-brightness</string>
-    <string name="auto_brightness_one_shot_summary">Brightness adjustment will only occur at the moment the screen is turned on</string>
+    <string name="auto_brightness_one_shot_title">One shot adaptive brightness</string>
+    <string name="auto_brightness_one_shot_summary">Brightness adjustment will be used only after the screen is turned on</string>
 
     <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_all">Allow network access</string>
@@ -163,7 +163,7 @@
 
     <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
-    <string name="wake_when_plugged_or_unplugged_summary">Wake device when connecting or disconnecting a power source</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Wake device when charging</string>
 
     <!-- FastCharge feature -->
     <string name="fast_charging_title">Fast charging</string>

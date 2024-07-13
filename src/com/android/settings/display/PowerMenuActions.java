@@ -217,12 +217,15 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             mBugReportPref.setEnabled(developmentSettings && isPrimaryUser);
             if (!developmentSettings) {
                 mBugReportPref.setChecked(false);
+                mBugReportPref.setVisible(false);
                 mBugReportPref.setSummary(R.string.power_menu_bug_report_devoptions_unavailable);
             } else if (!isPrimaryUser) {
                 mBugReportPref.setChecked(false);
+                mBugReportPref.setVisible(true);
                 mBugReportPref.setSummary(R.string.power_menu_bug_report_unavailable_for_user);
             } else {
                 mBugReportPref.setChecked(bugReport);
+                mBugReportPref.setVisible(true);
                 mBugReportPref.setSummary(null);
             }
         }
