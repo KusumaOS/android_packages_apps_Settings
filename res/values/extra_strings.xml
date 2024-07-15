@@ -299,4 +299,8 @@
     <!-- Show clipboard overlay -->
     <string name="show_clipboard_overlay_title">Show clipboard preview</string>
     <string name="show_clipboard_overlay_summary">Show a preview when content is copied to the clipboard</string>
+
+    <!-- Show screenshot overlay -->
+    <string name="show_screenshot_overlay_title">Show screenshot preview</string>
+    <string name="show_screenshot_overlay_summary">Show a preview when screenshot is taken</string>
 </resources>

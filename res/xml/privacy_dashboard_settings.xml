@@ -166,4 +166,11 @@
         android:summary="@string/show_clipboard_overlay_summary"
         android:defaultValue="true"/>
 
+    <!-- Show screenshot overlay -->
+    <lineageos.preference.extra.SecureSettingSwitchPreference
+        android:key="show_screenshot_overlay"
+        android:title="@string/show_screenshot_overlay_title"
+        android:summary="@string/show_screenshot_overlay_summary"
+        android:defaultValue="true"/>
+
 </PreferenceScreen>
