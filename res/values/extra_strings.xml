@@ -295,4 +295,8 @@
     <string name="navbar_layout_compact">Compact</string>
     <string name="navbar_layout_leftleaning">Left-leaning</string>
     <string name="navbar_layout_rightleaning">Right-leaning</string>
+
+    <!-- Show clipboard overlay -->
+    <string name="show_clipboard_overlay_title">Show clipboard preview</string>
+    <string name="show_clipboard_overlay_summary">Show a preview when content is copied to the clipboard</string>
 </resources>

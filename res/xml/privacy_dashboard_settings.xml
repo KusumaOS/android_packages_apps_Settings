@@ -159,4 +159,11 @@
         android:summary="@string/show_clip_access_notification_summary"
         settings:controller="com.android.settings.privacy.ShowClipAccessNotificationPreferenceController"/>
 
+    <!-- Show clipboard overlay -->
+    <lineageos.preference.extra.SecureSettingSwitchPreference
+        android:key="show_clipboard_overlay"
+        android:title="@string/show_clipboard_overlay_title"
+        android:summary="@string/show_clipboard_overlay_summary"
+        android:defaultValue="true"/>
+
 </PreferenceScreen>
