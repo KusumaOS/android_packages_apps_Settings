@@ -17,14 +17,17 @@
 package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
-import android.os.Build;
-import android.text.BidiFormatter;
+import android.os.SystemProperties;
 
+import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class SimpleBuildNumberPreferenceController extends BasePreferenceController {
+public class BuildDescriptionPreferenceController extends BasePreferenceController {
 
-    public SimpleBuildNumberPreferenceController(Context context,
+    private static final String KEY_EXTRA_BUILD_DESC_PROP = 
+            "ro.extra.display.build.desc";
+
+    public BuildDescriptionPreferenceController(Context context,
             String preferenceKey) {
         super(context, preferenceKey);
     }
@@ -36,6 +39,7 @@ public class SimpleBuildNumberPreferenceController extends BasePreferenceControl
 
     @Override
     public CharSequence getSummary() {
-        return BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY);
+        return SystemProperties.get(KEY_EXTRA_BUILD_DESC_PROP,
+                mContext.getString(R.string.unknown));
     }
 }

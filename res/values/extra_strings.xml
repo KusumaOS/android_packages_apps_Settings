@@ -303,4 +303,7 @@
     <!-- Show screenshot overlay -->
     <string name="show_screenshot_overlay_title">Show screenshot preview</string>
     <string name="show_screenshot_overlay_summary">Show a preview when screenshot is taken</string>
+
+    <!-- About phone -->
+    <string name="build_description">Description</string>
 </resources>
