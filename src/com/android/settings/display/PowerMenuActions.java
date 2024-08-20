@@ -22,6 +22,7 @@ import androidx.preference.SwitchPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.util.EmergencyAffordanceManager;
+import com.android.internal.widget.LockPatternUtils;
 import com.android.settingslib.applications.ServiceListing;
 
 import com.android.settings.R;
@@ -57,6 +58,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     private boolean mForceEmergCheck = false;
 
     Context mContext;
+    private LockPatternUtils mLockPatternUtils;
     private UserManager mUserManager;
 
     @Override
@@ -69,6 +71,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
         mUserManager = UserManager.get(mContext);
         mLineageGlobalActions = LineageGlobalActions.getInstance(mContext);
         mEmergencyAffordanceManager = new EmergencyAffordanceManager(mContext);
+        mLockPatternUtils = new LockPatternUtils(mContext);
 
         mPowerMenuItemsCategory = findPreference(CATEGORY_POWER_MENU_ITEMS);
 
@@ -234,6 +237,13 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mEmergencyPref.setSummary(R.string.power_menu_emergency_affordance_enabled);
             } else {
                 mEmergencyPref.setSummary(null);
+            }
+        }
+        if (mLockDownPref != null) {
+            if (mLockPatternUtils.isSecure(UserHandle.myUserId())) {
+                mLockDownPref.setVisible(true);
+            } else {
+                mLockDownPref.setVisible(false);
             }
         }
     }
