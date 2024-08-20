@@ -54,7 +54,7 @@
     <string name="app_volume_summary">Setel tingkat volume untuk setiap aplikasi</string>
 
     <!-- Deep Sleep percentage in device info -->
-    <string name="status_sleep_time">Tidur lelap</string>
+    <string name="status_sleep_time">Persentase tidur</string>
 
     <!-- Battery optimization -->
     <string name="high_power_apps_summary">Kontrol penggunaan baterai setiap aplikasi</string>

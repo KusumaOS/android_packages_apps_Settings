@@ -197,7 +197,7 @@
     <string name="app_volume_summary">Set volume levels for each app</string>
 
     <!-- Deep Sleep percentage in device info -->
-    <string name="status_sleep_time">Deep sleep</string>
+    <string name="status_sleep_time">Doze percentage</string>
 
     <!-- Hardware info -->
     <string name="soc_model">SoC</string>

@@ -26,6 +26,7 @@ import com.android.settings.core.InstrumentedPreferenceFragment;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 
 import java.util.ArrayList;
@@ -61,12 +62,13 @@ public class SmartBatterySettings extends DashboardFragment {
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, (SettingsActivity) getActivity(), this);
+        return buildPreferenceControllers(context, (SettingsActivity) getActivity(), 
+                this, getSettingsLifecycle());
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, SettingsActivity settingsActivity,
-            InstrumentedPreferenceFragment fragment) {
+            InstrumentedPreferenceFragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         if (settingsActivity != null && fragment != null) {
             controllers.add(
@@ -74,6 +76,8 @@ public class SmartBatterySettings extends DashboardFragment {
         } else {
             controllers.add(new RestrictAppPreferenceController(context));
         }
+        controllers.add(new SleeptimePreferenceController(context, lifecycle));
+
 
         return controllers;
     }
@@ -91,7 +95,7 @@ public class SmartBatterySettings extends DashboardFragment {
                 @Override
                 public List<AbstractPreferenceController> createPreferenceControllers(
                         Context context) {
-                    return buildPreferenceControllers(context, null, null);
+                    return buildPreferenceControllers(context, null, null, null);
                 }
             };
 }
