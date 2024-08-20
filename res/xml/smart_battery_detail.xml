@@ -43,6 +43,13 @@
         android:key="restricted_app"
         android:title="@string/restricted_app_title"/>
 
+    <Preference
+        android:key="sleep_time"
+        android:title="@string/status_sleep_time"
+        android:summary="@string/summary_placeholder"
+        android:selectable="false"
+        settings:controller="com.android.settings.fuelgauge.SleeptimePreferenceController"/>
+
     <com.android.settingslib.widget.FooterPreference
         android:key="smart_battery_detail_footer"
         android:title="@string/smart_battery_footer"

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.deviceinfo;
+package com.android.settings.fuelgauge;
 
 import android.content.Context;
 
