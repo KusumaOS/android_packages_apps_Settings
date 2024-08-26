@@ -38,9 +38,9 @@
     <string name="status_bar_quick_qs_pulldown_right">Right edge</string>
 
     <!-- Quick torch -->
-    <string name="torch_long_press_power_gesture_title">Quick torch</string>
+    <string name="torch_long_press_power_gesture_title">Quick flashlight</string>
     <string name="torch_long_press_power_gesture_desc">To quickly flash the camera light when screen is off, long press the power button</string>
-    <string name="torch_long_press_power_timeout_title">Turn off torch automatically</string>
+    <string name="torch_long_press_power_timeout_title">Turn off flashlight automatically</string>
     <string name="torch_long_press_power_timeout_never">Never</string>
     <string name="torch_long_press_power_timeout_1min">1 minute</string>
     <string name="torch_long_press_power_timeout_2min">2 minutes</string>
@@ -283,7 +283,7 @@
 
     <!-- Parallel space -->
     <string name="laboratory_parallel_space_title">Parallel Space</string>
-    <string name="laboratory_parallel_space_summary">Allow running multiple instances of the same application in parallel</string>
+    <string name="laboratory_parallel_space_summary">Use multiple accounts at the same time</string>
 
     <!-- Keyboard hint -->
     <string name="navigation_bar_ime_space_title">Show navigation button</string>

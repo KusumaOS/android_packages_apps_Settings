@@ -16,8 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tethering_allow_vpn_upstreams_summary">Izinkan klien hotspot menggunakan VPN perangkat ini untuk koneksi hulu</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Bagikan koneksi VPN ponsel melalui hotspot dan tethering</string>
     <string name="assisted_gps_summary">Unduh data satelit berbantuan dari internet guna meningkatkan performa memulai GPS secara pesat. Untuk panggilan darurat, GPS berbantuan selalu diizinkan.</string>
-    <string name="show_navbar_hint_title">Petunjuk navigasi</string>
-    <string name="show_navbar_hint_summary">Tampilkan petunjuk navigasi di bagian bawah layar</string>
+    <string name="show_navbar_hint_title">Petunjuk gestur</string>
+    <string name="show_navbar_hint_summary">Tampilkan petunjuk navigasi gestur di bagian bawah layar</string>
 </resources>

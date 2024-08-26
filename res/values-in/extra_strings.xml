@@ -24,18 +24,18 @@
 
     <!-- Hotspot client manager -->
     <string name="wifi_hotspot_hidden_ssid_title">Jaringan tersembunyi</string>
-    <string name="wifi_hotspot_hidden_ssid_summary">Nama hotspot Anda tidak akan ditampilkan dalam jaringan Wi-Fi yang tersedia</string>
-    <string name="wifi_hotspot_client_manager_title">Perangkat terhubung</string>
-    <string name="wifi_hotspot_client_manager_summary">Daftar dan kelola perangkat yang terhubung ke hotspot</string>
+    <string name="wifi_hotspot_hidden_ssid_summary">Jangan siarkan ID jaringan ke perangkat lain</string>
+    <string name="wifi_hotspot_client_manager_title">Kelola perangkat</string>
+    <string name="wifi_hotspot_client_manager_summary">Lihat semua perangkat yang terhubung ke hotspot</string>
     <string name="wifi_hotspot_client_manager_list_only_summary">Daftar perangkat yang terhubung ke hotspot</string>
-    <string name="wifi_hotspot_client_limit_title">Batas perangkat terhubung</string>
+    <string name="wifi_hotspot_client_limit_title">Batas perangkat</string>
     <string name="wifi_hotspot_blocked_clients_list_title">Perangkat yang diblokir</string>
-    <string name="wifi_hotspot_connected_clients_list_title">Perangkat yang terhubung</string>
+    <string name="wifi_hotspot_connected_clients_list_title">Perangkat yang diizinkan</string>
     <string name="wifi_hotspot_block_client_dialog_title">Blokir perangkat</string>
-    <string name="wifi_hotspot_block_client_dialog_text">Tindakan ini akan memutuskan \"<xliff:g id="device_name">%1$s</xliff:g>\" dari perangkat ini dan menambahkannya ke dalam daftar blokir</string>
-    <string name="wifi_hotspot_unblock_client_dialog_title">Buka blokir perangkat</string>
-    <string name="wifi_hotspot_unblock_client_dialog_text">Perangkat \"<xliff:g id="device_name">%1$s</xliff:g>\" akan dapat terhubung ke hotspot ini</string>
-    <string name="wifi_hotspot_client_manager_footer_text">Tidak ada klien yang tersedia saat ini. Perangkat yang terhubung dan terblokir akan terdaftar di sini jika tersedia. </string>
+    <string name="wifi_hotspot_block_client_dialog_text">Putuskan \"<xliff:g id="device_name">%1$s</xliff:g>\" dari hostpot dan tambahkan ke perangkat yang diblokir?</string>
+    <string name="wifi_hotspot_unblock_client_dialog_title">Izinkan perangkat</string>
+    <string name="wifi_hotspot_unblock_client_dialog_text">Izinkan \"<xliff:g id="device_name">%1$s</xliff:g>\" untuk terhubung ke hotspot?</string>
+    <string name="wifi_hotspot_client_manager_footer_text">Tidak ada perangkat yang terhubung ke hotspot saat ini</string>
     <string name="wifi_hotspot_auto_off_timeout_never">Jangan pernah nonaktifkan hotspot</string>
     <string name="custom_timeout_summary_never">Jangan pernah</string>
     <string name="custom_timeout_summary_1min">1 menit</string>
@@ -75,24 +75,16 @@
     <!-- Radio Info -->
     <string name="radio_info_title">Informasi radio</string>
 
-    <!-- Strict standby -->
-    <string name="strict_standby_policy_title">Proses latar belakang ketat</string>
-    <string name="strict_standby_policy_summary">Saat ditutup dari pengalih aplikasi terbaru, aplikasi dengan penggunaan baterai terbatas akan dipaksa berhenti.</string>
-
     <!-- Full screen apps -->
     <string name="display_cutout_force_fullscreen_title">Aplikasi layar penuh</string>
     <string name="display_cutout_force_fullscreen_summary">Izinkan aplikasi untuk ditampilkan melewati potongan layar</string>
-
-    <!-- Pulse music visualizer -->
-    <string name="show_lockscreen_pulse_title">Tampilkan Pulse</string>
-    <string name="show_lockscreen_pulse_summary">Grafik ekualiser audio di layar kunci</string>
 
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Akses Setelan Cepat dari perangkat yang dikunci</string>
     <string name="use_tiles_on_secure_keyguard_summary">Mengakses Setelan Cepat rawan tanpa membuka kunci ponsel atau tablet</string>
 
     <!-- Power menu on secure keyguard -->
-    <string name="use_power_menu_on_secure_keyguard_title">Akses menu daya dari perangkat yang dikunci</string>
+    <string name="use_power_menu_on_secure_keyguard_title">Akses aksi global dari perangkat yang dikunci</string>
     <string name="use_power_menu_on_secure_keyguard_summary">Mengakses tindakan matikan dan mulai ulang tanpa membuka kunci ponsel atau tablet</string>
 
     <!-- Ambient display gestures-->
@@ -110,4 +102,177 @@
     <!-- Hide apps -->
     <string name="hide">Arsipkan</string>
     <string name="unhide">Pulihkan</string>
+
+    <!-- Extra version -->
+    <string name="extra_version_title">Versi Kusuma</string>
+    <string name="extra_number_title">Nomor Kusuma</string>
+    <string name="extra_codename_title">Kode nama Kusuma</string>
+    <string name="base_lineage_version_title">Basis versi LineageOS</string>
+
+    <!-- Status bar icons -->
+    <string name="category_name_status_bar_display">Bilah status</string>
+    <string name="status_bar_system_icons_title">Ikon bilah status</string>
+    <string name="status_bar_system_icons_summary">Kontrol setiap ikon bilah status yang ditampilkan</string>
+
+    <!-- Quick pulldown -->
+    <string name="status_bar_quick_qs_pulldown_title">Tarik ke bawah dengan cepat</string>
+    <string name="quick_pulldown_category_title">Akses Setelan Cepat dengan cepat dengan menggeser bilah status ke bawah dari</string>
+    <string name="quick_pulldown_hint_title">Menggeser bilah status ke bawah dengan dua jari akan selalu mengakses Setelan Cepat</string>
+    <string name="status_bar_quick_qs_pulldown_summary">Tepi %1$s</string>
+    <string name="status_bar_quick_qs_pulldown_summary_left">Kiri</string>
+    <string name="status_bar_quick_qs_pulldown_summary_right">Kanan</string>
+    <string name="status_bar_quick_qs_pulldown_off">Tidak ada</string>
+    <string name="status_bar_quick_qs_pulldown_left">Tepi kiri</string>
+    <string name="status_bar_quick_qs_pulldown_right">Tepi kanan</string>
+
+    <!-- Quick torch -->
+    <string name="torch_long_press_power_gesture_title">Lampu senter cepat</string>
+    <string name="torch_long_press_power_gesture_desc">Untuk flash lampu kamera dengan cepat saat layar nonaktif, tekan &amp; tahan tombol daya</string>
+    <string name="torch_long_press_power_timeout_title">Otomatis nonaktifkan lampu senter</string>
+    <string name="torch_long_press_power_timeout_never">Jangan pernah</string>
+    <string name="torch_long_press_power_timeout_1min">1 menit</string>
+    <string name="torch_long_press_power_timeout_2min">2 menit</string>
+    <string name="torch_long_press_power_timeout_5min">5 menit</string>
+    <string name="torch_long_press_power_timeout_10min">10 menit</string>
+
+    <!-- Playback control -->
+    <string name="volbtn_music_controls_title">Kontrol pemutaran</string>
+    <string name="volbtn_music_controls_summary">Untuk mengalihkan media saat layar nonaktif, tekan &amp; tahan tombol volume</string>
+    <string name="volbtn_music_controls_summary_disabled">Untuk mengaktifkan, ubah tombol volume membangunkan perangkat ke nonaktif terlebih dahulu</string>
+
+    <!-- Partial screenshot -->
+    <string name="click_partial_screenshot_title">Screenshot sebagian</string>
+    <string name="click_partial_screenshot_summary">Tekan Daya &amp; Turunkan Volume secara bersamaan untuk mengambil screenshot sebagian</string>
+
+    <!-- Power menu -->
+    <string name="category_name_global_actions_display">Aksi global</string>
+    <string name="power_menu_title">Item aksi global</string>
+    <string name="power_menu_summary">Kontrol setiap aksi global yang ditampilkan</string>
+    <string name="power_menu_screenshot_summary">Tekan lama untuk screenshot sebagian</string>
+    <string name="power_menu_airplane_title">Mode pesawat</string>
+    <string name="power_menu_users_title">Beralih pengguna</string>
+    <string name="power_menu_bug_report_title">Laporan bug</string>
+    <string name="power_menu_bug_report_devoptions_unavailable">Laporan bug dinonaktifkan karena opsi pengembang nonaktif</string>
+    <string name="power_menu_bug_report_unavailable_for_user">Laporan bug dinonaktifkan untuk pengguna non-utama</string>
+    <string name="power_menu_emergency_title">Darurat</string>
+    <string name="power_menu_devicecontrols_title">Kontrol perangkat</string>
+    <string name="power_menu_advanced_restart_title">Mulai ulang lanjutan</string>
+    <string name="power_menu_advanced_restart_summary">Ketika tidak terkunci, berisi pilihan pada menu daya untuk mulai ulang ke recovery atau bootloader</string>
+    <string name="power_menu_emergency_affordance_enabled">Pintasan darurat diaktifkan</string>
+    <string name="power_menu_lockdown_title">Kunci total</string>
+
+    <!-- Calling button accessibility-->
+    <string name="home_answer_call_title">Tombol layar utama menjawab penggilan</string>
+    <string name="volume_answer_call_title">Tombol volume menjawab panggilan</string>
+
+    <!-- Waking button accessibility -->
+    <string name="volume_button_wake_title">Tombol volume membangunkan perangkat</string>
+    <string name="home_button_wake_title">Tombol layar utama membangunkan perangkat</string>
+    <string name="back_button_wake_title">Tombol kembali membangunkan perangkat</string>
+    <string name="menu_button_wake_title">Tombol menu membangunkan perangkat</string>
+    <string name="assist_button_wake_title">Tombol asisten membangunkan perangkat</string>
+    <string name="app_switch_button_wake_title">Tombol beralih aplikasi membangunkan perangkat</string>
+
+    <!-- Navigation bar -->
+    <string name="navigation_bar_invert_layout_title">Inversi urutan</string>
+    <string name="navigation_bar_invert_layout_summary">Tampilkan ikon navigasi dengan urutan terbalik</string>
+    <string name="navigation_bar_back_long_press_title">Aksi tekan lama Kembali</string>
+    <string name="navigation_bar_home_long_press_title">Aksi tekan lama Layar Utama</string>
+    <string name="navigation_bar_home_double_tap_title">Aksi ketuk dua kali Layar Utama</string>
+    <string name="navigation_bar_app_switch_long_press_title">Aksi tekan lama Beralih Aplikasi</string>
+
+    <!-- Hardware key rebinding -->
+    <string name="hardware_keys_action_nothing">Tidak ada aksi</string>
+    <string name="hardware_keys_action_menu">Buka/tutup menu</string>
+    <string name="hardware_keys_action_app_switch">Beralih aplikasi</string>
+    <string name="hardware_keys_action_search">Asisten digital</string>
+    <string name="hardware_keys_action_voice_search">Penelusuran suara</string>
+    <string name="hardware_keys_action_in_app_search">Telusuri dalam aplikasi</string>
+    <string name="hardware_keys_action_launch_camera">Buka kamera</string>
+    <string name="hardware_keys_action_sleep">Nonaktifkan layar</string>
+    <string name="hardware_keys_action_last_app">Aplikasi terakhir</string>
+    <string name="hardware_keys_action_split_screen">Belah layar</string>
+    <string name="hardware_keys_action_kill_app">Hentikan aplikasi saat ini</string>
+
+    <!-- Taskbar -->
+    <string name="navigation_bar_enable_taskbar_title">Bilah tugas</string>
+    <string name="navigation_bar_enable_taskbar_summary">Buka aplikasi dengan cepat dari navigasi sistem</string>
+    <string name="navigation_bar_enable_taskbar_disabled_gesture">Untuk mengaktifkan, ubah mode navigasi ke navigasi gestur terlebih dahulu</string>
+    <string name="navigation_bar_enable_taskbar_disabled_button">Untuk mengaktifkan, ubah mode navigasi ke navigasi 3 tombol terlebih dahulu</string>
+
+    <!-- Gesture navigation -->
+    <string name="navigation_bar_edge_long_swipe_title">Aksi geser panjang tepi</string>
+
+    <!-- Physical button navigation -->
+    <string name="physical_button_navigation_title">Navigasi tombol fisik</string>
+    <string name="physical_button_navigation_summary">Kembali, membuka Layar Utama dan beralih aplikasi dengan tombol fisik.</string>
+    <string name="hardware_keys_menu_short_press_title">Aksi ketuk Menu</string>
+    <string name="hardware_keys_menu_long_press_title">Aksi tekan lama Menu</string>
+    <string name="hardware_keys_assist_short_press_title">Aksi ketuk Asisten</string>
+    <string name="hardware_keys_assist_long_press_title">Aksi tekan lama Asisten</string>
+    <string name="hardware_keys_app_switch_short_press_title">Aksi ketuk Beralih Aplikasi</string>
+    <string name="swap_capacitive_keys_title">Inversi urutan</string>
+    <string name="swap_capacitive_keys_summary">Gunakan tombol fisik dengan urutan terbalik</string>
+
+    <!-- Key backlight -->
+    <string name="button_backlight_title">Lampu latar</string>
+    <string name="button_backlight_enabled">Cahaya tombol</string>
+    <string name="button_backlight_only_when_pressed_title">Nyalakan tombol hanya jika ditekan</string>
+    <string name="keyboard_backlight_enabled">Terangi papan ketik</string>
+    <string name="button_backlight_seekbar_title">Tombol kecerahan</string>
+    <string name="keyboard_backlight_seekbar_title">Kecerahan papan ketik</string>
+    <string name="backlight_timeout_title">Waktu habis iluminasi</string>
+    <string name="backlight_timeout_unlimited">Jangan Matikan</string>
+    <string name="backlight_summary_disabled">Dimatikan</string>
+    <string name="backlight_summary_enabled_with_timeout">Diaktifkan untuk <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Dihidupkan</string>
+
+    <!-- Camera button -->
+    <string name="hardware_keys_camera_key_title">Tombol kamera</string>
+    <string name="camera_sleep_on_release_title">Intip layar</string>
+    <string name="camera_sleep_on_release_summary">Tekan dan tahan setengah tombol kamera untuk membangunkan perangkat</string>
+    <string name="camera_launch_title">Buka kamera dengan cepat</string>
+    <string name="camera_launch_summary">Tekan &amp; tahan tombol kamera untuk membuka kamera</string>
+
+    <!-- Additional buttons -->
+    <string name="additional_buttons_title">Tombol tambahan</string>
+
+    <!-- Parallel space -->
+    <string name="laboratory_parallel_space_title">Ruang Paralel</string>
+    <string name="laboratory_parallel_space_summary">Gunakan beberapa akun bersamaan</string>
+
+    <!-- Keyboard hint -->
+    <string name="navigation_bar_ime_space_title">Tampilkan tombol navigasi</string>
+    <string name="navigation_bar_ime_space_summary">Untuk keyboard</string>
+
+    <!-- Navbar layout -->
+    <string name="navbar_layout_title">Jarak tombol</string>
+    <string name="navbar_layout_compact">Rapat</string>
+    <string name="navbar_layout_leftleaning">Cenderung kiri</string>
+    <string name="navbar_layout_rightleaning">Cenderung kanan</string>
+
+    <!-- Show clipboard overlay -->
+    <string name="show_clipboard_overlay_title">Tampilkan pratinjau papan klip</string>
+    <string name="show_clipboard_overlay_summary">Tampilkan pratinjau saat konten disalin ke dalam papan klip</string>
+
+    <!-- Show screenshot overlay -->
+    <string name="show_screenshot_overlay_title">Tampilkan pratinjau screenshot</string>
+    <string name="show_screenshot_overlay_summary">Tampilkan pratinjau saat screenshot diambil</string>
+
+    <!-- About phone -->
+    <string name="build_description">Deskripsi</string>
+
+    <!-- Bluetooth auto timeout -->
+    <string name="bluetooth_timeout">Otomatis nonaktifkan Bluetooth</string>
+    <string name="bluetooth_timeout_summary">Jangan pernah</string>
+
+    <!-- Wi-Fi auto timeout -->
+    <string name="wifi_timeout">Otomatis nonaktifkan Wi-Fi</string>
+    <string name="wifi_timeout_summary">Jangan pernah</string>
+
+    <!-- Contact/Storage Scopes -->
+    <string name="storage_scopes">Penyimpanan Terbatas</string>
+    <string name="storage_scopes_summary">Izinkan aplikasi untuk mengakses file dengan terbatas</string>
+    <string name="contact_scopes">Kontak Terbatas</string>
+    <string name="contact_scopes_summary">Izinkan aplikasi untuk mengakses kontak dengan terbatas</string>
 </resources>
