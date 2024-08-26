@@ -322,4 +322,7 @@
     <string name="storage_scopes_summary">Allow app to access limited files</string>
     <string name="contact_scopes">Contact Scopes</string>
     <string name="contact_scopes_summary">Allow app to access limited contacts</string>
+
+    <!-- Encryption -->
+    <string name="encrypted_summary_not_supported">Not supported</string>
 </resources>
