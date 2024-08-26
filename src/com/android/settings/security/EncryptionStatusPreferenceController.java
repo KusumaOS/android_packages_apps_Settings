@@ -17,6 +17,7 @@
 package com.android.settings.security;
 
 import android.content.Context;
+import android.os.SystemProperties;
 import android.os.UserManager;
 import android.text.TextUtils;
 
@@ -27,7 +28,6 @@ import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
 public class EncryptionStatusPreferenceController extends BasePreferenceController {
-
 
     public static final String PREF_KEY_ENCRYPTION_DETAIL_PAGE =
             "encryption_and_credentials_encryption_status";
@@ -54,10 +54,16 @@ public class EncryptionStatusPreferenceController extends BasePreferenceControll
     @Override
     public void updateState(Preference preference) {
         final boolean encryptionEnabled = LockPatternUtils.isDeviceEncryptionEnabled();
-        if (encryptionEnabled) {
-            preference.setSummary(R.string.encrypted_summary);
+        final boolean noFbe = 
+                SystemProperties.getBoolean("persist.sys.extra.no_fbe_support", true);
+        if (noFbe) {
+            preference.setSummary(R.string.encrypted_summary_not_supported);
         } else {
-            preference.setSummary(R.string.not_encrypted_summary);
+            if (encryptionEnabled) {
+                preference.setSummary(R.string.encrypted_summary);
+            } else {
+                preference.setSummary(R.string.not_encrypted_summary);
+            }
         }
 
     }
