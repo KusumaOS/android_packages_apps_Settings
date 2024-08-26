@@ -26,7 +26,7 @@
     </plurals>
 
     <plurals name="wifi_hotspot_client_limit_summary">
-        <item quantity="other">Sampai berjumlah <xliff:g id="device_num">%1$d</xliff:g> perangkat dapat terhubung ke hotspot ini</item>
-        <item quantity="one">Sampai berjumlah <xliff:g id="device_num">%1$d</xliff:g> perangkat dapat terhubung ke hotspot ini</item>
+        <item quantity="other">Hingga <xliff:g id="device_num">%1$d</xliff:g> perangkat diizinkan terhubung ke hotspot</item>
+        <item quantity="one">Hingga <xliff:g id="device_num">%1$d</xliff:g> perangkat diizinkan terhubung ke hotspot</item>
     </plurals>
 </resources>
