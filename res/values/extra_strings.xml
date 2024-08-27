@@ -157,8 +157,8 @@
     <string name="additional_buttons_title">Additional buttons</string>
 
     <!-- Three-fingers-swipe to screenshot -->
-    <string name="three_finger_gesture">Swipe to screenshot</string>
-    <string name="three_finger_gesture_summary">Swipe down with three fingers to take screenshot</string>
+    <string name="three_finger_gesture">Three fingers screenshot</string>
+    <string name="three_finger_gesture_summary">Swipe down with three fingers to take screenshot. Tap &amp; hold with three fingers to take partial screenshot.</string>
 
     <!-- Screenshot shutter -->
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>
