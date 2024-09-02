@@ -52,6 +52,7 @@ public class QuickPulldownSettings extends DashboardFragment {
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Lifecycle lifecycle) {
         List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new QuickPulldownMainSwitchPreferenceController(context));
         controllers.add(new QuickPulldownSelectorPreferenceController(context, lifecycle));
         return controllers;
     }

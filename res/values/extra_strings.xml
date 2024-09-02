@@ -29,12 +29,13 @@
 
     <!-- Quick pulldown -->
     <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
-    <string name="quick_pulldown_category_title">Quickly access Quick Settings with swipe down status bar from</string>
+    <string name="quick_pulldown_main_switch_title">Use quick pulldown</string>
+    <string name="quick_pulldown_category_title">Use gesture with swipe down status bar from</string>
     <string name="quick_pulldown_hint_title">Swipe down status bar with two finger will always quickly access Quick Settings</string>
     <string name="status_bar_quick_qs_pulldown_summary">%1$s edge</string>
     <string name="status_bar_quick_qs_pulldown_summary_left">Left</string>
     <string name="status_bar_quick_qs_pulldown_summary_right">Right</string>
-    <string name="status_bar_quick_qs_pulldown_off">None</string>
+    <string name="status_bar_quick_qs_pulldown_off">Off</string>
     <string name="status_bar_quick_qs_pulldown_left">Left edge</string>
     <string name="status_bar_quick_qs_pulldown_right">Right edge</string>
 

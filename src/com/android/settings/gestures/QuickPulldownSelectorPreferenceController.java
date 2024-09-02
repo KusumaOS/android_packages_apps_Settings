@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2018 The Android Open Source Project
- * Copyright (C) 2024 Kusuma
+ *               2024 Kusuma
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,6 @@ public class QuickPulldownSelectorPreferenceController extends AbstractPreferenc
         implements SelectorWithWidgetPreference.OnClickListener, LifecycleObserver,
         OnResume, OnPause, PreferenceControllerMixin {
 
-    static final String KEY_NONE = "quick_pulldown_none";
     static final String KEY_RIGHT = "quick_pulldown_right";
     static final String KEY_LEFT = "quick_pulldown_left";
 
@@ -52,7 +51,6 @@ public class QuickPulldownSelectorPreferenceController extends AbstractPreferenc
     private final Context mContext;
 
     PreferenceCategory mPreferenceCategory;
-    SelectorWithWidgetPreference mNone;
     SelectorWithWidgetPreference mRight;
     SelectorWithWidgetPreference mLeft;
 
@@ -71,7 +69,6 @@ public class QuickPulldownSelectorPreferenceController extends AbstractPreferenc
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         mPreferenceCategory = screen.findPreference(getPreferenceKey());
-        mNone = makeRadioPreference(KEY_NONE, R.string.status_bar_quick_qs_pulldown_off);
         if (mContext.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
             mRight = makeRadioPreference(KEY_RIGHT, R.string.status_bar_quick_qs_pulldown_left);
             mLeft = makeRadioPreference(KEY_LEFT, R.string.status_bar_quick_qs_pulldown_right);
@@ -113,10 +110,7 @@ public class QuickPulldownSelectorPreferenceController extends AbstractPreferenc
 
     @Override
     public void onRadioButtonClicked(SelectorWithWidgetPreference preference) {
-        if (preference == mNone) {
-            LineageSettings.System.putInt(mContext.getContentResolver(),
-                    LineageSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 0);
-        } else if (preference == mRight) {
+        if (preference == mRight) {
             LineageSettings.System.putInt(mContext.getContentResolver(),
                     LineageSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1);
         } else if (preference == mLeft) {
@@ -132,17 +126,20 @@ public class QuickPulldownSelectorPreferenceController extends AbstractPreferenc
 
         switch (value) {
             case 0:
-                mNone.setChecked(true);
+                mRight.setEnabled(false);
+                mLeft.setEnabled(false);
                 mRight.setChecked(false);
                 mLeft.setChecked(false);
                 break;
             case 1:
-                mNone.setChecked(false);
+                mRight.setEnabled(true);
+                mLeft.setEnabled(true);
                 mRight.setChecked(true);
                 mLeft.setChecked(false);
                 break;
             case 2:
-                mNone.setChecked(false);
+                mRight.setEnabled(true);
+                mLeft.setEnabled(true);
                 mRight.setChecked(false);
                 mLeft.setChecked(true);
                 break;
