@@ -117,6 +117,7 @@
 
     <!-- Gesture navigation -->
     <string name="gesture_navigation_settings_activity_title">@string/edge_to_edge_navigation_title</string>
+    <string name="navigation_bar_corner_long_swipe_title">Bottom corner swipe up action</string>
     <string name="navigation_bar_edge_long_swipe_title">Edge long swipe action</string>
 
     <!-- Physical button navigation -->

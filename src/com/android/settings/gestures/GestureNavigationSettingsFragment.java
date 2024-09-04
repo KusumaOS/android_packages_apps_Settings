@@ -65,6 +65,7 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
     private static final String NAVIGATION_BAR_HINT_KEY = "navigation_bar_hint";
     private static final String NAVIGATION_BAR_HINT_KEYBOARD_KEY = "navigation_bar_hint_keyboard";
 
+    private static final String KEY_CORNER_LONG_SWIPE = "navigation_bar_corner_long_swipe";
     private static final String KEY_EDGE_LONG_SWIPE = "navigation_bar_edge_long_swipe";
     private static final String KEY_ENABLE_TASKBAR = "enable_taskbar";
 
@@ -74,6 +75,7 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
     private float[] mBackGestureInsetScales;
     private float mDefaultBackGestureInset;
 
+    private ListPreference mCornerLongSwipeAction;
     private ListPreference mEdgeLongSwipeAction;
     private SwitchPreference mEnableTaskbar;
     private SwitchPreference mNavbarHint;
@@ -90,11 +92,16 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
         final Resources res = getResources();
         final ContentResolver resolver = requireActivity().getContentResolver();
 
+        Action cornerLongSwipeAction = Action.fromSettings(resolver,
+                LineageSettings.System.KEY_CORNER_LONG_SWIPE_ACTION,
+                Action.SEARCH);
+
         Action edgeLongSwipeAction = Action.fromSettings(resolver,
                 LineageSettings.System.KEY_EDGE_LONG_SWIPE_ACTION,
                 Action.NOTHING);
 
-        // Edge long swipe gesture
+        mCornerLongSwipeAction = initList(KEY_CORNER_LONG_SWIPE, cornerLongSwipeAction);
+
         mEdgeLongSwipeAction = initList(KEY_EDGE_LONG_SWIPE, edgeLongSwipeAction);
 
         mNavbarHint = findPreference(NAVIGATION_BAR_HINT_KEY);
@@ -144,6 +151,9 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
         String[] actionEntries = entries.toArray(new String[0]);
         String[] actionValues = values.toArray(new String[0]);
 
+        mCornerLongSwipeAction.setEntries(actionEntries);
+        mCornerLongSwipeAction.setEntryValues(actionValues);
+
         mEdgeLongSwipeAction.setEntries(actionEntries);
         mEdgeLongSwipeAction.setEntryValues(actionValues);
 
@@ -182,7 +192,11 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mEdgeLongSwipeAction) {
+        if (preference == mCornerLongSwipeAction) {
+            handleListChange(mCornerLongSwipeAction, newValue,
+                    LineageSettings.System.KEY_CORNER_LONG_SWIPE_ACTION);
+            return true;
+        } else if (preference == mEdgeLongSwipeAction) {
             handleListChange(mEdgeLongSwipeAction, newValue,
                     LineageSettings.System.KEY_EDGE_LONG_SWIPE_ACTION);
             return true;
