@@ -193,8 +193,7 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mCornerLongSwipeAction) {
-            handleListChange(mCornerLongSwipeAction, newValue,
-                    LineageSettings.System.KEY_CORNER_LONG_SWIPE_ACTION);
+            handleCornerLongSwipeChange(mCornerLongSwipeAction, newValue);
             return true;
         } else if (preference == mEdgeLongSwipeAction) {
             handleListChange(mEdgeLongSwipeAction, newValue,
@@ -226,6 +225,22 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
         list.setSummary(list.getEntry());
         list.setOnPreferenceChangeListener(this);
         return list;
+    }
+
+    private void handleCornerLongSwipeChange(ListPreference pref, Object newValue) {
+        String value = (String) newValue;
+        int index = pref.findIndexOfValue(value);
+        pref.setSummary(pref.getEntries()[index]);
+        LineageSettings.System.putInt(getContentResolver(), 
+                LineageSettings.System.KEY_CORNER_LONG_SWIPE_ACTION, Integer.parseInt(value));
+        int cornerLongSwipeValue = Integer.parseInt(value);
+        if (cornerLongSwipeValue == 0) {
+            Settings.Secure.putInt(getContentResolver(), 
+                    Settings.Secure.ASSIST_TOUCH_GESTURE_ENABLED, 0);
+        } else {
+            Settings.Secure.putInt(getContentResolver(), 
+                    Settings.Secure.ASSIST_TOUCH_GESTURE_ENABLED, 1);
+        }
     }
 
     private void handleListChange(ListPreference pref, Object newValue, String setting) {

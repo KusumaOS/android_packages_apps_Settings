@@ -42,34 +42,20 @@
         android:defaultValue="true" />
 
     <ListPreference
+        android:key="navigation_bar_corner_long_swipe"
+        android:dialogTitle="@string/navigation_bar_corner_long_swipe_title"
+        android:title="@string/navigation_bar_corner_long_swipe_title"
+        android:entries="@array/hardware_keys_action_entries"
+        android:entryValues="@array/hardware_keys_action_values"
+        android:persistent="false" />
+
+    <ListPreference
         android:key="navigation_bar_edge_long_swipe"
         android:dialogTitle="@string/navigation_bar_edge_long_swipe_title"
         android:title="@string/navigation_bar_edge_long_swipe_title"
         android:entries="@array/hardware_keys_action_entries"
         android:entryValues="@array/hardware_keys_action_values"
         android:persistent="false" />
-
-    <PreferenceCategory
-        android:key="assistant_gesture_category"
-        android:persistent="false"
-        android:title="@string/assistant_gesture_category_title">
-
-        <SwitchPreference
-            android:key="assistant_gesture_corner_swipe"
-            android:title="@string/assistant_corner_gesture_title"
-            android:summary="@string/assistant_corner_gesture_summary"
-            settings:controller="com.android.settings.gestures.GestureNavigationSettingsAssistController"
-        />
-
-        <ListPreference
-            android:key="navigation_bar_corner_long_swipe"
-            android:dialogTitle="@string/navigation_bar_corner_long_swipe_title"
-            android:title="@string/navigation_bar_corner_long_swipe_title"
-            android:entries="@array/hardware_keys_action_entries"
-            android:entryValues="@array/hardware_keys_action_values"
-            android:persistent="false" />
-
-    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="back_sensitivity_category"
