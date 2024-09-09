@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -135,8 +136,7 @@ public class TwoButtonNavigationSettingsFragment extends DashboardFragment
                     LineageSettings.System.KEY_BACK_LONG_PRESS_ACTION);
             return true;
         } else if (preference == mNavigationHomeLongPressAction) {
-            handleListChange((ListPreference) preference, newValue,
-                    LineageSettings.System.KEY_HOME_LONG_PRESS_ACTION);
+            handleHomeLongPressChange (mNavigationHomeLongPressAction, newValue);
             return true;
         } else if (preference == mNavigationHomeDoubleTapAction) {
             handleListChange((ListPreference) preference, newValue,
@@ -164,6 +164,22 @@ public class TwoButtonNavigationSettingsFragment extends DashboardFragment
         int index = pref.findIndexOfValue(value);
         pref.setSummary(pref.getEntries()[index]);
         LineageSettings.System.putInt(getContentResolver(), setting, Integer.parseInt(value));
+    }
+
+    private void handleHomeLongPressChange(ListPreference pref, Object newValue) {
+        String value = (String) newValue;
+        int index = pref.findIndexOfValue(value);
+        pref.setSummary(pref.getEntries()[index]);
+        LineageSettings.System.putInt(getContentResolver(), 
+                LineageSettings.System.KEY_HOME_LONG_PRESS_ACTION, Integer.parseInt(value));
+        int homeLongPressValue = Integer.parseInt(value);
+        if (homeLongPressValue == 0) {
+            Settings.Secure.putInt(getContentResolver(), 
+                    Settings.Secure.ASSIST_LONG_PRESS_HOME_ENABLED, 0);
+        } else {
+            Settings.Secure.putInt(getContentResolver(), 
+                    Settings.Secure.ASSIST_LONG_PRESS_HOME_ENABLED, 1);
+        }
     }
 
     @Override
