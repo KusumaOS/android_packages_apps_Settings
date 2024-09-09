@@ -79,6 +79,7 @@
         android:icon="@drawable/ic_settings_camera_button"
         android:order="-29"
         android:fragment="com.android.settings.system.CameraButtonSettings"
+        settings:searchable="false"
         settings:requiresConfig="@*lineageos.platform:integer/config_deviceHardwareKeys"
         settings:requiresConfigMask="32" />
 
@@ -87,6 +88,7 @@
         android:title="@string/additional_buttons_title"
         android:icon="@drawable/ic_settings_additional_buttons"
         android:order="-28"
+        settings:searchable="false"
         settings:requiresAction="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS">
         <intent
             android:action="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
