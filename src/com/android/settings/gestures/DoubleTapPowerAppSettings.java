@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
+ * Copyright (C) 2024 Kusuma
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,38 +17,31 @@
 
 package com.android.settings.gestures;
 
-import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.SearchIndexableResource;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider;
-import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.search.SearchIndexable;
+
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.AbstractPreferenceController;
-import com.android.settingslib.search.SearchIndexable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SearchIndexable
-public class DoubleTapPowerSettings extends DashboardFragment {
+public class DoubleTapPowerAppSettings extends DashboardFragment {
 
-    private static final String TAG = "DoubleTapPower";
-
-    public static final String PREF_KEY_SUGGESTION_COMPLETE =
-            "pref_double_tap_power_suggestion_complete";
+    private static final String TAG = "DoubleTapPowerAppSettings";
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        SuggestionFeatureProvider suggestionFeatureProvider = FeatureFactory.getFactory(context)
-                .getSuggestionFeatureProvider(context);
-        SharedPreferences prefs = suggestionFeatureProvider.getSharedPrefs(context);
-        prefs.edit().putBoolean(PREF_KEY_SUGGESTION_COMPLETE, true).apply();
     }
 
     @Override
@@ -58,14 +52,13 @@ public class DoubleTapPowerSettings extends DashboardFragment {
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Lifecycle lifecycle) {
         List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new DoubleTapPowerMainSwitchPreferenceController(context));
-        controllers.add(new DoubleTapPowerSelectorPreferenceController(context, lifecycle));
+        controllers.add(new DoubleTapPowerAppSelectorPreferenceController(context, lifecycle));
         return controllers;
     }
 
     @Override
     public int getMetricsCategory() {
-        return SettingsEnums.SETTINGS_GESTURE_DOUBLE_TAP_POWER;
+        return MetricsEvent.EXTRA_METRICS;
     }
 
     @Override
@@ -75,15 +68,15 @@ public class DoubleTapPowerSettings extends DashboardFragment {
 
     @Override
     protected int getPreferenceScreenResId() {
-        return R.xml.double_tap_power_settings;
+        return R.xml.double_tap_power_app_settings;
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.double_tap_power_settings) {
+            new BaseSearchIndexProvider(R.xml.double_tap_power_app_settings) {
         @Override
         public List<AbstractPreferenceController> createPreferenceControllers(
-                Context context) {
-            return buildPreferenceControllers(context, null);
-        }
-    };
+            Context context) {
+                return buildPreferenceControllers(context, null);
+            }
+        };
 }

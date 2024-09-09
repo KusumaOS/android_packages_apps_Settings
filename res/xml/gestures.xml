@@ -39,9 +39,9 @@
         android:fragment="com.android.settings.gestures.QuickPulldownSettings" 
         settings:controller="com.android.settings.gestures.QuickPulldownPreferenceController" />
 
-    <Preference
+    <com.android.settingslib.PrimarySwitchPreference
         android:key="gesture_double_tap_power_input_summary"
-        android:title="@string/double_tap_power_for_camera_title"
+        android:title="@string/power_double_tap_action_title"
         android:fragment="com.android.settings.gestures.DoubleTapPowerSettings"
         settings:searchable="false"
         settings:controller="com.android.settings.gestures.DoubleTapPowerPreferenceController" />

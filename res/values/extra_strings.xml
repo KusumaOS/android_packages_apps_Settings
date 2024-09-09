@@ -328,4 +328,22 @@
 
     <!-- Encryption -->
     <string name="encrypted_summary_not_supported">Not supported</string>
+
+    <!-- Power double tap action -->
+    <string name="power_double_tap_action_title">Quick power button</string>
+    <string name="double_tap_power_category_title">Double press power button to</string>
+    <string name="double_tap_power_main_switch_title">Use quick power button</string>
+    <string name="custom_gesture_action_name_none">Off</string>
+    <string name="custom_gesture_action_name_camera">Open camera</string>
+    <string name="custom_gesture_action_name_assistant">Access your digital assistant</string>
+    <string name="custom_gesture_action_name_toggle_media">Play or pause media</string>
+    <string name="custom_gesture_action_name_qr">Open QR code scanner</string>
+    <string name="custom_gesture_action_name_wallet">Access your digital wallet</string>
+    <string name="custom_gesture_action_name_wallet_disabled">No wallet available</string>
+    <string name="custom_gesture_action_name_device_control">Open device control</string>
+    <string name="custom_gesture_action_name_device_control_disabled">No device available</string>
+    <string name="custom_gesture_action_name_app">Open app</string>
+    <string name="custom_gesture_action_name_app_summary">None</string>
+    <string name="custom_gesture_action_name_app_open">Open</string>
+    <string name="custom_gesture_action_name_app_unavailable">No app set</string>
 </resources>
