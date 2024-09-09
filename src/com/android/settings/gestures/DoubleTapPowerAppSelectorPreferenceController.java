@@ -25,7 +25,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.provider.Settings;
 import android.os.UserHandle;
@@ -70,6 +69,7 @@ public class DoubleTapPowerAppSelectorPreferenceController extends AbstractPrefe
         super(context);
         mContext = context;
         packageManager = mContext.getPackageManager();
+        appList = getLaunchableApps();
 
         if (lifecycle != null) {
             lifecycle.addObserver(this);
@@ -80,7 +80,7 @@ public class DoubleTapPowerAppSelectorPreferenceController extends AbstractPrefe
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         mScreen = screen;
-        loadApplications();
+        loadAppList();
         mSettingObserver = new SettingObserver(screen);
     }
 
@@ -139,6 +139,25 @@ public class DoubleTapPowerAppSelectorPreferenceController extends AbstractPrefe
         }
     }
 
+    private List<ApplicationInfo> getLaunchableApps() {
+        Intent launchIntent = new Intent(Intent.ACTION_MAIN);
+        launchIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+    
+        List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(launchIntent, 0);
+    
+        List<ApplicationInfo> launchableApps = new ArrayList<>();
+        for (ResolveInfo resolveInfo : resolveInfos) {
+            try {
+                ApplicationInfo appInfo = packageManager.getApplicationInfo(resolveInfo.activityInfo.packageName, 0);
+                launchableApps.add(appInfo);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.e(TAG, "App not found: " + resolveInfo.activityInfo.packageName, e);
+            }
+        }
+    
+        return launchableApps;
+    }
+
     private void loadAppList() {
         if (appList != null && !appList.isEmpty() && mScreen != null) {
             List<ApplicationInfo> sortedList = appList.stream()
@@ -157,41 +176,6 @@ public class DoubleTapPowerAppSelectorPreferenceController extends AbstractPrefe
                 updateState(appPreference);
                 mScreen.addPreference(appPreference);
             }
-        }
-    }
-
-    private void loadApplications() {
-        new LoadApplications().execute();
-    }
-
-    private class LoadApplications extends AsyncTask<Void, Void, List<ApplicationInfo>> {
-        @Override
-        protected List<ApplicationInfo> doInBackground(Void... params) {
-            List<ApplicationInfo> apps = new ArrayList<>();
-            Set<String> launchablePackages = new HashSet<>();
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-            List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
-            for (ResolveInfo resolveInfo : activities) {
-                launchablePackages.add(resolveInfo.activityInfo.packageName);
-            }
-            try {
-                List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
-                for (ApplicationInfo appInfo : installedApps) {
-                    if (launchablePackages.contains(appInfo.packageName)) {
-                        apps.add(appInfo);
-                    }
-                }
-            } catch (Exception e) {
-                Log.e(TAG, "Failed to load installed applications", e);
-            }
-            return apps;
-        }
-
-        @Override
-        protected void onPostExecute(List<ApplicationInfo> result) {
-            appList = result;
-            loadAppList();
         }
     }
 
