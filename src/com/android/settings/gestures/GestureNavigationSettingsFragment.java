@@ -19,6 +19,7 @@ package com.android.settings.gestures;
 import android.app.settings.SettingsEnums;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -107,7 +108,9 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
         mNavbarHint = findPreference(NAVIGATION_BAR_HINT_KEY);
         mNavbarHintKeyboard = findPreference(NAVIGATION_BAR_HINT_KEYBOARD_KEY);
         if (LineageSettings.System.getInt(resolver, 
-                LineageSettings.System.NAVIGATION_BAR_HINT, 1) != 0) {
+                LineageSettings.System.NAVIGATION_BAR_HINT, 1) != 0 ||
+                res.getConfiguration().orientation ==
+                Configuration.ORIENTATION_LANDSCAPE) {
             mNavbarHintKeyboard.setVisible(false);
         }
 
@@ -188,6 +191,17 @@ public class GestureNavigationSettingsFragment extends DashboardFragment
         super.onPause();
 
         mWindowManager.removeView(mIndicatorView);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mNavbarHintKeyboard.setVisible(false);
+        } else {
+            mNavbarHintKeyboard.setVisible(true);
+        }
     }
 
     @Override
