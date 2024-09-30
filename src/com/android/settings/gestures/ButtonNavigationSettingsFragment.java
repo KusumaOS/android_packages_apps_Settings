@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -122,6 +123,16 @@ public class ButtonNavigationSettingsFragment extends DashboardFragment
 
         mNavBarInverse = findPreference(KEY_NAV_BAR_INVERSE);
         mNavBarLayout = findPreference(KEY_NAV_BAR_LAYOUT);
+        if (mNavBarLayout != null) {
+            String[] navBarEntries = res.getStringArray(R.array.navbar_layout_entries);
+            if (res.getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                String temp = navBarEntries[2];
+                navBarEntries[2] = navBarEntries[3];
+                navBarEntries[3] = temp;
+            }
+            mNavBarLayout.setEntries(navBarEntries);
+            mNavBarLayout.setEntryValues(res.getStringArray(R.array.navbar_layout_values));
+        }
 
         mEnableTaskbar = findPreference(KEY_ENABLE_TASKBAR);
         if (mEnableTaskbar != null) {

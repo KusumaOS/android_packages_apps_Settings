@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -60,10 +61,12 @@ public class TwoButtonNavigationSettingsFragment extends DashboardFragment
     private static final String KEY_NAVIGATION_BACK_LONG_PRESS = "navigation_back_long_press";
     private static final String KEY_NAVIGATION_HOME_LONG_PRESS = "navigation_home_long_press";
     private static final String KEY_NAVIGATION_HOME_DOUBLE_TAP = "navigation_home_double_tap";
+    private static final String KEY_NAV_BAR_LAYOUT = "navbar_layout_views";
 
     private ListPreference mNavigationBackLongPressAction;
     private ListPreference mNavigationHomeLongPressAction;
     private ListPreference mNavigationHomeDoubleTapAction;
+    private ListPreference mNavBarLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,6 +102,18 @@ public class TwoButtonNavigationSettingsFragment extends DashboardFragment
         // Navigation bar home double tap
         mNavigationHomeDoubleTapAction = initList(KEY_NAVIGATION_HOME_DOUBLE_TAP,
                 homeDoubleTapAction);
+
+        mNavBarLayout = findPreference(KEY_NAV_BAR_LAYOUT);
+        if (mNavBarLayout != null) {
+            String[] navBarEntries = res.getStringArray(R.array.navbar_layout_entries);
+            if (res.getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                String temp = navBarEntries[2];
+                navBarEntries[2] = navBarEntries[3];
+                navBarEntries[3] = temp;
+            }
+            mNavBarLayout.setEntries(navBarEntries);
+            mNavBarLayout.setEntryValues(res.getStringArray(R.array.navbar_layout_values));
+        }
 
         List<Integer> unsupportedValues = new ArrayList<>();
         List<String> entries = new ArrayList<>(
