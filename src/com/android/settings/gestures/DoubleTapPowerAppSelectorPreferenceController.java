@@ -142,30 +142,18 @@ public class DoubleTapPowerAppSelectorPreferenceController extends AbstractPrefe
     private List<ApplicationInfo> getLaunchableApps() {
         Intent launchIntent = new Intent(Intent.ACTION_MAIN);
         launchIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-    
         List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(launchIntent, 0);
-    
-        List<ApplicationInfo> launchableApps = new ArrayList<>();
-        for (ResolveInfo resolveInfo : resolveInfos) {
-            try {
-                ApplicationInfo appInfo = packageManager.getApplicationInfo(resolveInfo.activityInfo.packageName, 0);
-                launchableApps.add(appInfo);
-            } catch (PackageManager.NameNotFoundException e) {
-                Log.e(TAG, "App not found: " + resolveInfo.activityInfo.packageName, e);
-            }
-        }
-    
-        return launchableApps;
+        return resolveInfos.parallelStream()
+                .map(resolveInfo -> resolveInfo.activityInfo.applicationInfo)
+                .distinct()
+                .sorted(Comparator.comparing(app -> app.loadLabel(packageManager).toString().toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     private void loadAppList() {
         if (appList != null && !appList.isEmpty() && mScreen != null) {
-            List<ApplicationInfo> sortedList = appList.stream()
-                .sorted(Comparator.comparing(app -> app.loadLabel(packageManager).toString().toLowerCase())) // Sort by label
-                .collect(Collectors.toList());
-
             mScreen.removeAll();
-            for (ApplicationInfo app : sortedList) {
+            for (ApplicationInfo app : appList) {
                 SelectorWithWidgetPreference appPreference = new SelectorWithWidgetPreference(mContext);
                 appPreference.setTitle(app.loadLabel(packageManager));
                 appPreference.setIcon(app.loadIcon(packageManager));
